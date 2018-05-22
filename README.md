@@ -1,2 +1,1 @@
-# robocon18
-Repo for robocon 18 codes
+This is a repo by faizansid
