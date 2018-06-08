@@ -30,8 +30,9 @@ while True:
         if radius>5:
             cv.circle(frame,center,radius,(0,255,0),2)
             cv.circle(frame,centroid,5,(0,0,255),-1)
-            dist=5.033512 + (611.8415-5.033512)/(1 + pow((radius/12.93463),1.196176))
+            dist= 2.387843 + (474386500 - 2.387843)/(1 + pow((radius/0.000008902916),0.991343))
             print(int(x),"\t",int(y),"\t",int(dist))
+            #print(radius)
     cv.imshow('Ball',frame)
     cv.imshow('Mask',mask)
 cv.destroyAllWindows()
