@@ -14,10 +14,6 @@ while cv.waitKey(1) & 0xff!=ord('q'):
     th2 = cv.erode(th2, None, iterations=2)  
     th2 = cv.dilate(th2, None, iterations=2)
     h,w=frame.shape[:2]
-    # im1=th2[:,int(3*h/4):int(h)]
-    # im2=th2[:,int(h/2):int(3*h/4)]
-    # im3=th2[:,int(h/4):int(h/2)]
-    # im4=th2[:,0:int(h/4)]
     # im1=th2[int(3*h/4):int(h),:]
     # im2=th2[int(h/2):int(3*h/4),:]
     # im3=th2[int(h/4):int(h/2),:]
