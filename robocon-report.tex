@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage[english]{babel}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+\title{Robocon 2018 Project Report}% Title
+\author{Names of all team members}% Author
+\date{\today}% Date
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+% \rhead{\theauthor}
+\lhead{\thetitle}
+\cfoot{\thepage}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+    \centering
+    \vspace*{0.5 cm}
+%     \includegraphics[scale = 0.75]{}\\[1.0 cm]   % University Logo
+    \textsc{\LARGE Indian Institute of Technology, Kanpur}\\[2.0 cm]   % University Name
+    \textsc{\Large something}\\[0.5 cm]               % Course Code
+    \textsc{\large something else}\\[0.5 cm]               % Course Name
+    \rule{\linewidth}{0.2 mm} \\[0.4 cm]
+    { \huge \bfseries \thetitle}\\
+    \rule{\linewidth}{0.2 mm} \\[0.5 cm]
+    {\large \theauthor}\\[1 cm]
+    {\large \thedate}\\[2 cm]
+ 
+    \vfill
+    
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Problem Statement}
+Write official problem statement and it's details here
+
+\pagebreak
+
+\section{Overall Strategy}
+Describe it \\
+
+\pagebreak
+
+\section{Mechanical Subsystem}
+\subsection{a}
+Text text text
+\subsection{b}
+Text text text
+\subsection{c}
+Text text text
+
+\pagebreak
+\section{Electrical Subsystem}
+\subsection{a}
+Text text text
+\subsection{b}
+Text text text
+\subsection{c}
+Text text text
+
+\pagebreak
+\section{Software Subsystem}
+\subsection{Line Following}
+This is required to guide the autonomous robot between throwing zones. We identify the midpoint of the line beneath the robot and move based on the error in trajectory. A simple logitech camera should be sufficient for this purpose, and we plan to add an LED to fix lighting issues. Elaborate on turning, etc
+
+\subsection{Image Processing}
+The first step is to get input from the camera. Previously we were planning to use Intel RealSense camera for the same but due to issues with compatibility with other softwares, and lack of sufficient documentation, we plan to use the Kinect as of now.
+
+The ultimate aim here is to understand whether the ball went through the hoop or not. We could track the ball and identify whether it will do so to help us decide whether to move from one throwing zone to another. On the other hand, having such a lack of confidence in our throwing mechanism is bound to cost us the win in an actual competition. Thus it is better to create a foolproof throwing mechanism, as the winning teams have, rather than rely on error correction.
+
+Still, for educational purposes if we insist on determining this, we have several strategies in place:
+
+We wrote ball-tracking code which works to a distance of X meters. This relies on tracking the shuttlecock based on color thresholding. Since the unpredictable background could interfere with this method, we will have to do depth-based background subtraction using a depth camera like the Kinect. The main challenge with this method is that the ring is extremely far away (~7 meters), so traditional cameras may not give reliable results.
+
+Another method is to use shuttlecocks of different colors, and supply them to the autonomous bot based on if it successfully throws the shuttlecock. We can use color sensors to decide whether to try in the current TZ or move to the next one. The main problem with this method is the extra time wasted to wait for the shot to be completed.
+
+\subsection{Integration with ROS}
+Text text text
+
+\end{document}
