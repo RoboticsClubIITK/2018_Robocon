@@ -19,13 +19,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-if(Serial.available() > 0)
-{
-  input=Serial.read();
-  Serial.print(input,DEC); 
-  
-}
-if(input == 32)
+
 {
   digitalWrite(22,HIGH);
   digitalWrite(23,LOW);
@@ -41,34 +35,5 @@ if(input == 32)
   analogWrite(5,255);
   
 }
-/*if(input =! 32)
-{
-  digitalWrite(7,HIGH);
-  digitalWrite(8,LOW);
-  //digitalWrite(24,HIGH);
-  //digitalWrite(25,LOW);
-  analogWrite(9,255);
-  //analogWrite(3,255);
-}
-}
-//if(input==108)
-/*{
-  digitalWrite(7,LOW);
-  digitalWrite(8,LOW);
- // digitalWrite(24,HIGH);
-  //digitalWrite(25,LOW);
-    analogWrite(9,255);
-  //analogWrite(3,255);
-  
-}
-if(input==114)
-{
-  digitalWrite(7,HIGH);
-  digitalWrite(8,LOW);
-  //digitalWrite(24,LOW);
- // digitalWrite(25,HIGH);
-    analogWrite(9,255);
-  //analogWrite(3,255);
-}*/
 }
 
