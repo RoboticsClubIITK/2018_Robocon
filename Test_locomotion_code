@@ -1,0 +1,74 @@
+int input=0;
+void setup() {
+  pinMode(2,OUTPUT);//enable
+  pinMode(3,OUTPUT);//enable
+  pinMode(4,OUTPUT);//enable
+  pinMode(5,OUTPUT);//enable
+  pinMode(22,OUTPUT);
+  pinMode(23,OUTPUT);
+  pinMode(24,OUTPUT);
+  pinMode(25,OUTPUT);
+  pinMode(26,OUTPUT);
+  pinMode(27,OUTPUT);
+  pinMode(28,OUTPUT);
+  pinMode(29,OUTPUT);
+  
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+if(Serial.available() > 0)
+{
+  input=Serial.read();
+  Serial.print(input,DEC); 
+  
+}
+if(input == 32)
+{
+  digitalWrite(22,HIGH);
+  digitalWrite(23,LOW);
+  digitalWrite(24,HIGH);
+  digitalWrite(25,LOW);
+  digitalWrite(26,HIGH);
+  digitalWrite(27,LOW);
+  digitalWrite(28,HIGH);
+  digitalWrite(29,LOW);
+  analogWrite(2,255);
+  analogWrite(3,255);
+  analogWrite(4,255);
+  analogWrite(5,255);
+  
+}
+/*if(input =! 32)
+{
+  digitalWrite(7,HIGH);
+  digitalWrite(8,LOW);
+  //digitalWrite(24,HIGH);
+  //digitalWrite(25,LOW);
+  analogWrite(9,255);
+  //analogWrite(3,255);
+}
+}
+//if(input==108)
+/*{
+  digitalWrite(7,LOW);
+  digitalWrite(8,LOW);
+ // digitalWrite(24,HIGH);
+  //digitalWrite(25,LOW);
+    analogWrite(9,255);
+  //analogWrite(3,255);
+  
+}
+if(input==114)
+{
+  digitalWrite(7,HIGH);
+  digitalWrite(8,LOW);
+  //digitalWrite(24,LOW);
+ // digitalWrite(25,HIGH);
+    analogWrite(9,255);
+  //analogWrite(3,255);
+}*/
+}
+
