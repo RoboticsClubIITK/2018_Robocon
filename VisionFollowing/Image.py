@@ -36,7 +36,7 @@ class Image:
             else:
                 self.contourCenterX = 0
             
-            self.dir =  int((self.middleX-self.contourCenterX) * self.getContourExtent(self.MainContour))
+            #self.dir =  int((self.middleX-self.contourCenterX) * self.getContourExtent(self.MainContour))
             self.x_coord = int(self.contourCenterX)
 
             cv2.drawContours(self.image,self.MainContour,-1,(0,255,0),3) #Draw Contour GREEN
