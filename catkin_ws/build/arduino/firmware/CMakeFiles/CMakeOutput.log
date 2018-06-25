@@ -1,0 +1,368 @@
+The target system is: Arduino -  - 
+The host system is: Linux - 4.13.0-45-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/avr-gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/3.5.1/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/avr-g++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/3.5.1/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_21a56/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_21a56.dir/build.make CMakeFiles/cmTC_21a56.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_21a56.dir/testCCompiler.c.obj
+/usr/bin/avr-gcc    -g -Os       -mcall-prologues -ffunction-sections -fdata-sections    -o CMakeFiles/cmTC_21a56.dir/testCCompiler.c.obj   -c /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp/testCCompiler.c
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_21a56
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_21a56.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-gcc  -g -Os       -mcall-prologues -ffunction-sections -fdata-sections   -Wl,--gc-sections -lm  CMakeFiles/cmTC_21a56.dir/testCCompiler.c.obj  -o cmTC_21a56  
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bcefb/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_bcefb.dir/build.make CMakeFiles/cmTC_bcefb.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_bcefb.dir/CMakeCCompilerABI.c.obj
+/usr/bin/avr-gcc    -g -Os       -mcall-prologues -ffunction-sections -fdata-sections    -o CMakeFiles/cmTC_bcefb.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_bcefb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bcefb.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-gcc  -g -Os       -mcall-prologues -ffunction-sections -fdata-sections   -Wl,--gc-sections -lm -v CMakeFiles/cmTC_bcefb.dir/CMakeCCompilerABI.c.obj  -o cmTC_bcefb   
+Using built-in specs.
+Reading specs from /usr/lib/gcc/avr/4.9.2/device-specs/specs-avr2
+COLLECT_GCC=/usr/bin/avr-gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/4.9.2/lto-wrapper
+Target: avr
+Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr CFLAGS='-g -O2 -fstack-protector-strong -Wformat ' CPPFLAGS=-D_FORTIFY_SOURCE=2 CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ' FCFLAGS='-g -O2 -fstack-protector-strong' FFLAGS='-g -O2 -fstack-protector-strong' GCJFLAGS='-g -O2 -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -Wl,-z,relro' OBJCFLAGS='-g -O2 -fstack-protector-strong -Wformat ' OBJCXXFLAGS='-g -O2 -fstack-protector-strong -Wformat '
+Thread model: single
+gcc version 4.9.2 (GCC) 
+COMPILER_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/../../../avr/bin/
+LIBRARY_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/../../../avr/lib/
+COLLECT_GCC_OPTIONS='-g' '-Os' '-mcall-prologues' '-ffunction-sections' '-fdata-sections' '-v' '-o' 'cmTC_bcefb' '-specs=device-specs/specs-avr2'
+ /usr/lib/gcc/avr/4.9.2/collect2 -plugin /usr/lib/gcc/avr/4.9.2/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper -plugin-opt=-fresolution=/tmp/ccwyIn2H.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc -o cmTC_bcefb -L/usr/lib/gcc/avr/4.9.2 -L/usr/lib/gcc/avr/4.9.2/../../../avr/lib --gc-sections -lm CMakeFiles/cmTC_bcefb.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lm -lc --end-group
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(avr-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_bcefb/fast"]
+  ignore line: [make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_bcefb.dir/build.make CMakeFiles/cmTC_bcefb.dir/build]
+  ignore line: [make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Building C object CMakeFiles/cmTC_bcefb.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/usr/bin/avr-gcc    -g -Os       -mcall-prologues -ffunction-sections -fdata-sections    -o CMakeFiles/cmTC_bcefb.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Linking C executable cmTC_bcefb]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bcefb.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [/usr/bin/avr-gcc  -g -Os       -mcall-prologues -ffunction-sections -fdata-sections   -Wl,--gc-sections -lm -v CMakeFiles/cmTC_bcefb.dir/CMakeCCompilerABI.c.obj  -o cmTC_bcefb   ]
+  ignore line: [Using built-in specs.]
+  ignore line: [Reading specs from /usr/lib/gcc/avr/4.9.2/device-specs/specs-avr2]
+  ignore line: [COLLECT_GCC=/usr/bin/avr-gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/4.9.2/lto-wrapper]
+  ignore line: [Target: avr]
+  ignore line: [Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr CFLAGS='-g -O2 -fstack-protector-strong -Wformat ' CPPFLAGS=-D_FORTIFY_SOURCE=2 CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ' FCFLAGS='-g -O2 -fstack-protector-strong' FFLAGS='-g -O2 -fstack-protector-strong' GCJFLAGS='-g -O2 -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -Wl,-z,relro' OBJCFLAGS='-g -O2 -fstack-protector-strong -Wformat ' OBJCXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ']
+  ignore line: [Thread model: single]
+  ignore line: [gcc version 4.9.2 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/../../../avr/bin/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/../../../avr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-g' '-Os' '-mcall-prologues' '-ffunction-sections' '-fdata-sections' '-v' '-o' 'cmTC_bcefb' '-specs=device-specs/specs-avr2']
+  link line: [ /usr/lib/gcc/avr/4.9.2/collect2 -plugin /usr/lib/gcc/avr/4.9.2/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper -plugin-opt=-fresolution=/tmp/ccwyIn2H.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc -o cmTC_bcefb -L/usr/lib/gcc/avr/4.9.2 -L/usr/lib/gcc/avr/4.9.2/../../../avr/lib --gc-sections -lm CMakeFiles/cmTC_bcefb.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lm -lc --end-group]
+    arg [/usr/lib/gcc/avr/4.9.2/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/avr/4.9.2/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccwyIn2H.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lm] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_bcefb] ==> ignore
+    arg [-L/usr/lib/gcc/avr/4.9.2] ==> dir [/usr/lib/gcc/avr/4.9.2]
+    arg [-L/usr/lib/gcc/avr/4.9.2/../../../avr/lib] ==> dir [/usr/lib/gcc/avr/4.9.2/../../../avr/lib]
+    arg [--gc-sections] ==> ignore
+    arg [-lm] ==> lib [m]
+    arg [CMakeFiles/cmTC_bcefb.dir/CMakeCCompilerABI.c.obj] ==> ignore
+    arg [--start-group] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lm] ==> lib [m]
+    arg [-lc] ==> lib [c]
+    arg [--end-group] ==> ignore
+  remove lib [gcc]
+  collapse library dir [/usr/lib/gcc/avr/4.9.2] ==> [/usr/lib/gcc/avr/4.9.2]
+  collapse library dir [/usr/lib/gcc/avr/4.9.2/../../../avr/lib] ==> [/usr/lib/avr/lib]
+  implicit libs: [m;m;c]
+  implicit dirs: [/usr/lib/gcc/avr/4.9.2;/usr/lib/avr/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_778b0/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_778b0.dir/build.make CMakeFiles/cmTC_778b0.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_778b0.dir/feature_tests.c.obj
+/usr/bin/avr-gcc    -g -Os       -mcall-prologues -ffunction-sections -fdata-sections    -std=c11 -o CMakeFiles/cmTC_778b0.dir/feature_tests.c.obj   -c /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/feature_tests.c
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_778b0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_778b0.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-gcc  -g -Os       -mcall-prologues -ffunction-sections -fdata-sections   -Wl,--gc-sections -lm  CMakeFiles/cmTC_778b0.dir/feature_tests.c.obj  -o cmTC_778b0  
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c9f0a/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_c9f0a.dir/build.make CMakeFiles/cmTC_c9f0a.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_c9f0a.dir/feature_tests.c.obj
+/usr/bin/avr-gcc    -g -Os       -mcall-prologues -ffunction-sections -fdata-sections    -std=c99 -o CMakeFiles/cmTC_c9f0a.dir/feature_tests.c.obj   -c /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/feature_tests.c
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_c9f0a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c9f0a.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-gcc  -g -Os       -mcall-prologues -ffunction-sections -fdata-sections   -Wl,--gc-sections -lm  CMakeFiles/cmTC_c9f0a.dir/feature_tests.c.obj  -o cmTC_c9f0a  
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0bc86/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_0bc86.dir/build.make CMakeFiles/cmTC_0bc86.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_0bc86.dir/feature_tests.c.obj
+/usr/bin/avr-gcc    -g -Os       -mcall-prologues -ffunction-sections -fdata-sections    -std=c90 -o CMakeFiles/cmTC_0bc86.dir/feature_tests.c.obj   -c /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/feature_tests.c
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_0bc86
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0bc86.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-gcc  -g -Os       -mcall-prologues -ffunction-sections -fdata-sections   -Wl,--gc-sections -lm  CMakeFiles/cmTC_0bc86.dir/feature_tests.c.obj  -o cmTC_0bc86  
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_51a36/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_51a36.dir/build.make CMakeFiles/cmTC_51a36.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_51a36.dir/testCXXCompiler.cxx.obj
+/usr/bin/avr-g++     -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions    -o CMakeFiles/cmTC_51a36.dir/testCXXCompiler.cxx.obj -c /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_51a36
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51a36.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-g++   -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions   -Wl,--gc-sections -lm  CMakeFiles/cmTC_51a36.dir/testCXXCompiler.cxx.obj  -o cmTC_51a36  
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_80f4c/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_80f4c.dir/build.make CMakeFiles/cmTC_80f4c.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_80f4c.dir/CMakeCXXCompilerABI.cpp.obj
+/usr/bin/avr-g++     -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions    -o CMakeFiles/cmTC_80f4c.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_80f4c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_80f4c.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-g++   -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions   -Wl,--gc-sections -lm -v CMakeFiles/cmTC_80f4c.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_80f4c   
+Using built-in specs.
+Reading specs from /usr/lib/gcc/avr/4.9.2/device-specs/specs-avr2
+COLLECT_GCC=/usr/bin/avr-g++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/4.9.2/lto-wrapper
+Target: avr
+Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr CFLAGS='-g -O2 -fstack-protector-strong -Wformat ' CPPFLAGS=-D_FORTIFY_SOURCE=2 CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ' FCFLAGS='-g -O2 -fstack-protector-strong' FFLAGS='-g -O2 -fstack-protector-strong' GCJFLAGS='-g -O2 -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -Wl,-z,relro' OBJCFLAGS='-g -O2 -fstack-protector-strong -Wformat ' OBJCXXFLAGS='-g -O2 -fstack-protector-strong -Wformat '
+Thread model: single
+gcc version 4.9.2 (GCC) 
+COMPILER_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/../../../avr/bin/
+LIBRARY_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/../../../avr/lib/
+COLLECT_GCC_OPTIONS='-g' '-Os' '-mcall-prologues' '-ffunction-sections' '-fdata-sections' '-fno-exceptions' '-v' '-o' 'cmTC_80f4c' '-specs=device-specs/specs-avr2'
+ /usr/lib/gcc/avr/4.9.2/collect2 -plugin /usr/lib/gcc/avr/4.9.2/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper -plugin-opt=-fresolution=/tmp/ccFJuewR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc -o cmTC_80f4c -L/usr/lib/gcc/avr/4.9.2 -L/usr/lib/gcc/avr/4.9.2/../../../avr/lib --gc-sections CMakeFiles/cmTC_80f4c.dir/CMakeCXXCompilerABI.cpp.obj -lgcc -lm --start-group -lgcc -lm -lc --end-group
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(avr-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_80f4c/fast"]
+  ignore line: [make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_80f4c.dir/build.make CMakeFiles/cmTC_80f4c.dir/build]
+  ignore line: [make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Building CXX object CMakeFiles/cmTC_80f4c.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/usr/bin/avr-g++     -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions    -o CMakeFiles/cmTC_80f4c.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Linking CXX executable cmTC_80f4c]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_80f4c.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [/usr/bin/avr-g++   -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions   -Wl,--gc-sections -lm -v CMakeFiles/cmTC_80f4c.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_80f4c   ]
+  ignore line: [Using built-in specs.]
+  ignore line: [Reading specs from /usr/lib/gcc/avr/4.9.2/device-specs/specs-avr2]
+  ignore line: [COLLECT_GCC=/usr/bin/avr-g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/4.9.2/lto-wrapper]
+  ignore line: [Target: avr]
+  ignore line: [Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr CFLAGS='-g -O2 -fstack-protector-strong -Wformat ' CPPFLAGS=-D_FORTIFY_SOURCE=2 CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ' FCFLAGS='-g -O2 -fstack-protector-strong' FFLAGS='-g -O2 -fstack-protector-strong' GCJFLAGS='-g -O2 -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -Wl,-z,relro' OBJCFLAGS='-g -O2 -fstack-protector-strong -Wformat ' OBJCXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ']
+  ignore line: [Thread model: single]
+  ignore line: [gcc version 4.9.2 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/../../../avr/bin/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/../../../avr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-g' '-Os' '-mcall-prologues' '-ffunction-sections' '-fdata-sections' '-fno-exceptions' '-v' '-o' 'cmTC_80f4c' '-specs=device-specs/specs-avr2']
+  link line: [ /usr/lib/gcc/avr/4.9.2/collect2 -plugin /usr/lib/gcc/avr/4.9.2/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper -plugin-opt=-fresolution=/tmp/ccFJuewR.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc -o cmTC_80f4c -L/usr/lib/gcc/avr/4.9.2 -L/usr/lib/gcc/avr/4.9.2/../../../avr/lib --gc-sections CMakeFiles/cmTC_80f4c.dir/CMakeCXXCompilerABI.cpp.obj -lgcc -lm --start-group -lgcc -lm -lc --end-group]
+    arg [/usr/lib/gcc/avr/4.9.2/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/avr/4.9.2/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccFJuewR.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lm] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_80f4c] ==> ignore
+    arg [-L/usr/lib/gcc/avr/4.9.2] ==> dir [/usr/lib/gcc/avr/4.9.2]
+    arg [-L/usr/lib/gcc/avr/4.9.2/../../../avr/lib] ==> dir [/usr/lib/gcc/avr/4.9.2/../../../avr/lib]
+    arg [--gc-sections] ==> ignore
+    arg [CMakeFiles/cmTC_80f4c.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lm] ==> lib [m]
+    arg [--start-group] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lm] ==> lib [m]
+    arg [-lc] ==> lib [c]
+    arg [--end-group] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc]
+  collapse library dir [/usr/lib/gcc/avr/4.9.2] ==> [/usr/lib/gcc/avr/4.9.2]
+  collapse library dir [/usr/lib/gcc/avr/4.9.2/../../../avr/lib] ==> [/usr/lib/avr/lib]
+  implicit libs: [m;m;c]
+  implicit dirs: [/usr/lib/gcc/avr/4.9.2;/usr/lib/avr/lib]
+  implicit fwks: []
+
+
+
+
+Detecting CXX [-std=c++14] compiler features compiled with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_47e91/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_47e91.dir/build.make CMakeFiles/cmTC_47e91.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_47e91.dir/feature_tests.cxx.obj
+/usr/bin/avr-g++     -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions    -std=c++14 -o CMakeFiles/cmTC_47e91.dir/feature_tests.cxx.obj -c /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/feature_tests.cxx
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_47e91
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_47e91.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-g++   -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions   -Wl,--gc-sections -lm  CMakeFiles/cmTC_47e91.dir/feature_tests.cxx.obj  -o cmTC_47e91  
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_63ab8/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_63ab8.dir/build.make CMakeFiles/cmTC_63ab8.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_63ab8.dir/feature_tests.cxx.obj
+/usr/bin/avr-g++     -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions    -std=c++11 -o CMakeFiles/cmTC_63ab8.dir/feature_tests.cxx.obj -c /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/feature_tests.cxx
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_63ab8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_63ab8.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-g++   -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions   -Wl,--gc-sections -lm  CMakeFiles/cmTC_63ab8.dir/feature_tests.cxx.obj  -o cmTC_63ab8  
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1f113/fast"
+make[3]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_1f113.dir/build.make CMakeFiles/cmTC_1f113.dir/build
+make[4]: Entering directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_1f113.dir/feature_tests.cxx.obj
+/usr/bin/avr-g++     -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions    -std=c++98 -o CMakeFiles/cmTC_1f113.dir/feature_tests.cxx.obj -c /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/feature_tests.cxx
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_1f113
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f113.dir/link.txt --verbose=1
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/usr/bin/avr-g++   -g -Os       -mcall-prologues -ffunction-sections -fdata-sections -fno-exceptions   -Wl,--gc-sections -lm  CMakeFiles/cmTC_1f113.dir/feature_tests.cxx.obj  -o cmTC_1f113  
+make[4]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+make[3]: Leaving directory '/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/CMakeTmp'
+
+

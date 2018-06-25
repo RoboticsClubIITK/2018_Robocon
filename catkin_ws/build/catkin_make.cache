@@ -1,0 +1,2 @@
+arduino:beginner_tutorials:process_image:ros_opencv
+-DCATKIN_DEVEL_PREFIX=/home/raunaks/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/raunaks/catkin_ws/install -G Unix Makefiles
