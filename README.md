@@ -14,15 +14,10 @@ cd ~/catkin_ws/
 catkin_make
 ```
 
-2. Clone this repository to your catkin workspace
+2. Copy the packages process_image and arduino to the src directory of the catkin workspace:
 ```bash
 cd ~/catkin_ws/src
-git clone https://github.com/AUV-IITK/auv2016.git
 ```
 
-3. Run the [build.sh](utils/build.sh) script
-```bash
-~/catkin_ws/src/auv2016/build.sh
-```
 
 
