@@ -42,11 +42,11 @@ while cv2.waitKey(1) & 0xff != ord('q'):
         #error4 = Images[3].dir  #error of furthest part of line
         
         slope = (Images[3].x_coord - Images[0].x_coord)/180.0
-        #theta = round(math.degrees(math.atan(slope)), 2)
+        theta = round(math.degrees(math.atan(slope)), 2)
         delta=int(Images[1].middleX-Images[1].contourCenterX)
         fm = RepackImages(Images)
         t2 = time.clock()
-        cv2.putText(fm,"Time: " + str((t2-t1)*1000) + " ms", (10, 470), font, 0.5, (0,0,255), 1, cv2.LINE_AA)
+        #cv2.putText(fm,"Time: " + str((t2-t1)*1000) + " ms", (10, 470), font, 0.5, (0,0,255), 1, cv2.LINE_AA)
         
         # for i in range(N_SLICES):
         #     cv2.imshow("part %d" % i, Images[i].image)
@@ -63,6 +63,7 @@ while cv2.waitKey(1) & 0xff != ord('q'):
         # binary = "{0:b}".format(theta)
         
         ser.write(str.encode(str(delta) + "\n"))
+        ser.write(str.encode(str(theta) + "\t"))
         it = it + 1
 
         # connection.sendall( bytes(str(direction).encode('utf8')) )
