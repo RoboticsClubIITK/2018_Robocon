@@ -18,9 +18,9 @@ for q in range(N_SLICES):
     Images.append(Image())
 
 capture = cv2.VideoCapture(1)  # read the video stream
-capture.set(3, 320.0)  # set the width
-capture.set(4, 240.0)  # set the height
-capture.set(5, 15)  # set the frame rate
+# capture.set(3, 320.0)  # set the width
+# capture.set(4, 240.0)  # set the height
+# capture.set(5, 15)  # set the frame rate
 cv2.namedWindow('frame', cv2.WINDOW_FULLSCREEN)
 
 it = 1

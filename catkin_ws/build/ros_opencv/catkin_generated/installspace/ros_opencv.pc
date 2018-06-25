@@ -1,8 +1,0 @@
-prefix=/home/raunaks/catkin_ws/install
-
-Name: ros_opencv
-Description: Description of ros_opencv
-Version: 0.0.0
-Cflags: -I/home/raunaks/catkin_ws/install/include
-Libs: -L/home/raunaks/catkin_ws/install/lib -lros_opencv
-Requires: cv_bridge image_transport roscpp sensor_msgs std_msgs rospy
