@@ -160,7 +160,7 @@ ros/time.h
 ros/time.h
 /home/raunaks/catkin_ws/build/arduino/ros_lib/ros/time.h
 
-/home/raunaks/catkin_ws/src/arduino/firmware/arduino_node.cpp
+/home/raunaks/catkin_ws/src/arduino/firmware/arduino_mecanum_node.cpp
 ros.h
 -
 Arduino.h

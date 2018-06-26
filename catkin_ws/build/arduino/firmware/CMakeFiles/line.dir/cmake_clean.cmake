@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/line.dir/arduino_node.cpp.obj"
+  "CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj"
   "CMakeFiles/line.dir/home/raunaks/catkin_ws/build/arduino/ros_lib/time.cpp.obj"
   "/home/raunaks/catkin_ws/devel/share/arduino/line.pdb"
   "/home/raunaks/catkin_ws/devel/share/arduino/line.elf"

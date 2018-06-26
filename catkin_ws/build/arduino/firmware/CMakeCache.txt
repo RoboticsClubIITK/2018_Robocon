@@ -218,6 +218,9 @@ Project_SOURCE_DIR:STATIC=/home/raunaks/catkin_ws/src/arduino/firmware
 ROS_LIB_DIR:UNINITIALIZED=/home/raunaks/catkin_ws/build/arduino/ros_lib
 
 //Dependencies for target
+mega_CORE_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
 uno_CORE_LIB_DEPENDS:STATIC=
 
 

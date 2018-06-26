@@ -5,7 +5,7 @@ include_directories(${ROS_LIB_DIR})
 #add_definitions(-DUSB_CON)
 
 generate_arduino_firmware(line
-  SRCS arduino_node.cpp ${ROS_LIB_DIR}/time.cpp
-  BOARD uno
-  PORT /dev/ttyACM0
+  SRCS arduino_mecanum_node.cpp ${ROS_LIB_DIR}/time.cpp
+  BOARD uno 
+  PORT /dev/ttyACM1
 )

@@ -175,32 +175,32 @@ line-upload/fast:
 	$(MAKE) -f CMakeFiles/line-upload.dir/build.make CMakeFiles/line-upload.dir/build
 .PHONY : line-upload/fast
 
-arduino_node.obj: arduino_node.cpp.obj
+arduino_mecanum_node.obj: arduino_mecanum_node.cpp.obj
 
-.PHONY : arduino_node.obj
+.PHONY : arduino_mecanum_node.obj
 
 # target to build an object file
-arduino_node.cpp.obj:
-	$(MAKE) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/arduino_node.cpp.obj
-.PHONY : arduino_node.cpp.obj
+arduino_mecanum_node.cpp.obj:
+	$(MAKE) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj
+.PHONY : arduino_mecanum_node.cpp.obj
 
-arduino_node.i: arduino_node.cpp.i
+arduino_mecanum_node.i: arduino_mecanum_node.cpp.i
 
-.PHONY : arduino_node.i
+.PHONY : arduino_mecanum_node.i
 
 # target to preprocess a source file
-arduino_node.cpp.i:
-	$(MAKE) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/arduino_node.cpp.i
-.PHONY : arduino_node.cpp.i
+arduino_mecanum_node.cpp.i:
+	$(MAKE) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/arduino_mecanum_node.cpp.i
+.PHONY : arduino_mecanum_node.cpp.i
 
-arduino_node.s: arduino_node.cpp.s
+arduino_mecanum_node.s: arduino_mecanum_node.cpp.s
 
-.PHONY : arduino_node.s
+.PHONY : arduino_mecanum_node.s
 
 # target to generate assembly for a file
-arduino_node.cpp.s:
-	$(MAKE) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/arduino_node.cpp.s
-.PHONY : arduino_node.cpp.s
+arduino_mecanum_node.cpp.s:
+	$(MAKE) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/arduino_mecanum_node.cpp.s
+.PHONY : arduino_mecanum_node.cpp.s
 
 home/raunaks/catkin_ws/build/arduino/ros_lib/time.obj: home/raunaks/catkin_ws/build/arduino/ros_lib/time.cpp.obj
 
@@ -782,9 +782,9 @@ help:
 	@echo "... line"
 	@echo "... line-size"
 	@echo "... line-upload"
-	@echo "... arduino_node.obj"
-	@echo "... arduino_node.i"
-	@echo "... arduino_node.s"
+	@echo "... arduino_mecanum_node.obj"
+	@echo "... arduino_mecanum_node.i"
+	@echo "... arduino_mecanum_node.s"
 	@echo "... home/raunaks/catkin_ws/build/arduino/ros_lib/time.obj"
 	@echo "... home/raunaks/catkin_ws/build/arduino/ros_lib/time.i"
 	@echo "... home/raunaks/catkin_ws/build/arduino/ros_lib/time.s"

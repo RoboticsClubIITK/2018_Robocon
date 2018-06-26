@@ -1,11 +1,7 @@
-#!/usr/bin/env python
-
 import numpy as np
 import cv2
-
 low=(65,50,0)
 upp=(180,200,255)
-
 class Image_process:
     
     def __init__(self):
@@ -13,7 +9,6 @@ class Image_process:
         self.contourCenterX = 0
         self.MainContour = None
         self.x_coord = None
-        self.dir = None
         
     def Process(self):
         blur=cv2.GaussianBlur(self.image,(5,5),0)#blur the grayscale image
@@ -42,7 +37,7 @@ class Image_process:
             else:
                 self.contourCenterX = 0
             
-            self.dir =  int((self.middleX-self.contourCenterX) * self.getContourExtent(self.MainContour))
+            #self.dir =  int((self.middleX-self.contourCenterX) * self.getContourExtent(self.MainContour))
             self.x_coord = int(self.contourCenterX)
 
             cv2.drawContours(self.image,self.MainContour,-1,(0,255,0),3) #Draw Contour GREEN

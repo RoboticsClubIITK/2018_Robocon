@@ -13,11 +13,13 @@ import math
 
 def processed_image_pub():
     pub_image = rospy.Publisher('/robocon2018/image_raw', Image, queue_size=10)
-    pub_error = rospy.Publisher('/robocon2018/error', Float64, queue_size=10)
+    pub_angle = rospy.Publisher('/robocon2018/angle', Float64, queue_size=10)
+    pub_distance = rospy.Publisher('/robocon2018/distance', Float64, queue_size=10)
 
     rospy.init_node('process_image_node', anonymous=False)
     rate = rospy.Rate(15)
     
+    ############################IP HERE######################################
     font = cv2.FONT_HERSHEY_SIMPLEX
     Images=[]
     N_SLICES = 4
@@ -25,7 +27,7 @@ def processed_image_pub():
     for q in range(N_SLICES):
         Images.append(Image_process())
 
-    capture = cv2.VideoCapture(0)
+    capture = cv2.VideoCapture(1)
     br = CvBridge()
     it = 1
 
@@ -54,7 +56,7 @@ def processed_image_pub():
             else:
                 rospy.loginfo("Could not detect contours")
             
-            #theta = round(math.degrees(math.atan(slope)), 2)
+            theta = round(math.degrees(math.atan(slope)), 2)
             delta=int(Images[1].middleX-Images[1].contourCenterX)
             fm = RepackImages(Images)
             t2 = time.clock()
@@ -69,7 +71,8 @@ def processed_image_pub():
 
             # cv2.imshow("frame", fm)
 
-            print('Angle: ', delta)
+            print('Angle: ', theta)
+            print('Distance: ', delta)
             print('Iteration: ', it)
 
             it = it + 1
@@ -78,7 +81,11 @@ def processed_image_pub():
         pub_image.publish(br.cv2_to_imgmsg(fm, "bgr8"))
 
         rospy.loginfo('publishing angle')
-        pub_error.publish(delta)
+        pub_angle.publish(theta)
+
+        rospy.loginfo('publishing distance')
+        pub_distance.publish(delta)
+
         rate.sleep()
 
 if __name__ == '__main__':
