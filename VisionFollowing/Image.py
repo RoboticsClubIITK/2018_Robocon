@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
-low=(65,50,0)
-upp=(180,200,255)
+low=(0,50,0)
+upp=(150,255,255)
 class Image:
     
     def __init__(self):

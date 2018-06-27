@@ -1,0 +1,2 @@
+arduino:beginner_tutorial:process_image
+-DCATKIN_DEVEL_PREFIX=/home/faizansid/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/faizansid/catkin_ws/install -G Unix Makefiles

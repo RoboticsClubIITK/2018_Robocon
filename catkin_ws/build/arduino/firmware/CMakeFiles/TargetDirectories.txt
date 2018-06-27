@@ -1,0 +1,7 @@
+/home/faizansid/catkin_ws/build/arduino/firmware/CMakeFiles/edit_cache.dir
+/home/faizansid/catkin_ws/build/arduino/firmware/CMakeFiles/rebuild_cache.dir
+/home/faizansid/catkin_ws/build/arduino/firmware/CMakeFiles/upload.dir
+/home/faizansid/catkin_ws/build/arduino/firmware/CMakeFiles/mega2560_CORE.dir
+/home/faizansid/catkin_ws/build/arduino/firmware/CMakeFiles/line.dir
+/home/faizansid/catkin_ws/build/arduino/firmware/CMakeFiles/line-size.dir
+/home/faizansid/catkin_ws/build/arduino/firmware/CMakeFiles/line-upload.dir

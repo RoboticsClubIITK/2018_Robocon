@@ -2,8 +2,8 @@ import cv2 as cv
 import numpy as np 
 from imutils.video import VideoStream
 import imutils
-pinkl=(150,50,100)
-pinkh=(175,255,255)
+pinkl=(65,50,0)
+pinkh=(200,200,255)
 cap=VideoStream(src=1).start()
 cv.namedWindow('Ball',cv.WINDOW_FULLSCREEN)
 cv.namedWindow('Mask',cv.WINDOW_FULLSCREEN)

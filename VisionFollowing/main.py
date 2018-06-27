@@ -8,7 +8,7 @@ import math
 from Image import *
 from Utils import *
 
-ser = Serial('/dev/ttyACM0', 4800)
+ser = Serial('/dev/ttyACM1', 4800)
 font = cv2.FONT_HERSHEY_SIMPLEX
 direction = 0
 Images=[]
@@ -17,7 +17,7 @@ N_SLICES = 4
 for q in range(N_SLICES):
     Images.append(Image())
 
-capture = cv2.VideoCapture(0)  # read the video stream
+capture = cv2.VideoCapture(1)  # read the video stream
 cv2.namedWindow('frame', cv2.WINDOW_FULLSCREEN)
 
 it = 1
@@ -57,13 +57,13 @@ while cv2.waitKey(1) & 0xff != ord('q'):
 
         cv2.imshow("frame", fm)
         print('Slope: ', slope)
-        print('Angle: ', delta)
+        print('Angle: ', theta)
         print('Iteration: ', it)
 
         # binary = "{0:b}".format(theta)
         
-        ser.write(str.encode(str(delta) + "\n"))
-        ser.write(str.encode(str(theta) + "\t"))
+        #ser.write(str.encode(str(delta) + "\n"))
+        ser.write(str.encode(str(theta) + "\n"))
         it = it + 1
 
         # connection.sendall( bytes(str(direction).encode('utf8')) )

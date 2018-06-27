@@ -3,18 +3,18 @@ int distance;
 float angle;
 int iter = 1;
 
-int flSpeed = 3;
-int flDirn1 = 4;
-int flDirn2 = 7;
-int frSpeed = 11;
-int frDirn1 = 12;
-int frDirn2 = 13;
-int blSpeed = 0;
-int blDirn1 = 0;
-int blDirn2 = 0;
-int brSpeed = 0;
-int brDirn1 = 0;
-int brDirn2 = 0;
+int flSpeed = 2;
+int flDirn1 = 23;
+int flDirn2 = 22;
+int frSpeed = 3;
+int frDirn1 = 25;
+int frDirn2 = 24;
+int blSpeed = 4;
+int blDirn1 = 27;
+int blDirn2 = 26;
+int brSpeed = 5;
+int brDirn1 = 29;
+int brDirn2 = 28;
 
 void setup() {
   // put your setup code here, to run once:
@@ -38,18 +38,19 @@ void setup() {
 
 void straight()
 {
+  int rpm=255;
   digitalWrite(flDirn1, HIGH);
   digitalWrite(flDirn2, LOW);
   digitalWrite(frDirn1, HIGH);
   digitalWrite(frDirn2, LOW);
-  analogWrite(flSpeed, 100);
-  analogWrite(frSpeed, 100);
+  analogWrite(flSpeed, rpm);
+  analogWrite(frSpeed, rpm);
   digitalWrite(blDirn1, HIGH);
   digitalWrite(blDirn2, LOW);
   digitalWrite(brDirn1, HIGH);
   digitalWrite(brDirn2, LOW);
-  analogWrite(blSpeed, 100);
-  analogWrite(brSpeed, 100);
+  analogWrite(blSpeed, rpm);
+  analogWrite(brSpeed, rpm);
 }
 
 
@@ -57,13 +58,13 @@ void straight()
 void turn_left(int rpm)
 {
   digitalWrite(flDirn1, LOW);
-  digitalWrite(flDirn2, LOW);
+  digitalWrite(flDirn2, HIGH);
   digitalWrite(frDirn1, HIGH);
   digitalWrite(frDirn2, LOW);
   analogWrite(flSpeed, rpm);
   analogWrite(frSpeed, rpm);
   digitalWrite(blDirn1, LOW);
-  digitalWrite(blDirn2, LOW);
+  digitalWrite(blDirn2, HIGH);
   digitalWrite(brDirn1, HIGH);
   digitalWrite(brDirn2, LOW);
   analogWrite(blSpeed, rpm);
@@ -75,13 +76,13 @@ void turn_right(int rpm)
   digitalWrite(flDirn1, HIGH);
   digitalWrite(flDirn2, LOW);
   digitalWrite(frDirn1, LOW);
-  digitalWrite(frDirn2, LOW);
+  digitalWrite(frDirn2, HIGH);
   analogWrite(flSpeed, rpm);
   analogWrite(frSpeed, rpm);
   digitalWrite(blDirn1, HIGH);
   digitalWrite(blDirn2, LOW);
   digitalWrite(brDirn1, LOW);
-  digitalWrite(brDirn2, LOW);
+  digitalWrite(brDirn2, HIGH);
   analogWrite(blSpeed, rpm);
   analogWrite(brSpeed, rpm);
 }
@@ -125,23 +126,22 @@ void loop() {
   {
     iter++;
     char c = Serial.read();
-    int rpm;
-    if(c == '\n' || c == '\t') 
+    if(c == '\n') 
     {
       buffer[pos] = '\0';
-      float val = atof(buffer);
+      int val = atoi(buffer);
       
-      //Serial.print("Iteration: ");
-      //Serial.println(iter);
+      Serial.print("Iteration: ");
+      Serial.println(iter);
 
       pos = 0;
       //int rpm=int(angle*255.0/90.0)%255;
       //int rpm=int(angle/3)%255;
       
-      if(c == '\t')
-      {
+      //if(c == '\n')
+      //{
         int dellim=10;
-        rpm=100;
+        int rpm=255;
         if(val < -dellim)
         {
           turn_right(rpm);
@@ -157,9 +157,9 @@ void loop() {
         {
           straight();
         }
-      }
+     // }
       
-      else if(c == '\n')
+     /* else if(c == '\n')
       {
         int thetlim=10;
         rpm=100;
@@ -178,7 +178,7 @@ void loop() {
         {
           straight();
         }
-      }
+      }*/
       
       
       Serial.print(val);
