@@ -5,11 +5,14 @@ from sensor_msgs.msg import Image
 from std_msgs.msg import Float64
 from cv_bridge import CvBridge
 import cv2
+import imutils
 
 from Image_process import *
 from Utils import *
 import time
 import math
+
+rotCon=0
 
 def processed_image_pub():
     pub_image = rospy.Publisher('/robocon2018/image_raw', Image, queue_size=10)
@@ -27,12 +30,14 @@ def processed_image_pub():
     for q in range(N_SLICES):
         Images.append(Image_process())
 
-    capture = cv2.VideoCapture(4)
+    capture = cv2.VideoCapture(0)
     br = CvBridge()
     it = 1
 
     while not rospy.is_shutdown():
         flag, img = capture.read()
+        if rotCon:
+            img=imutils.rotate_bound(img,90)
         
         direction = 0
         img = RemoveBackground(img, False)
@@ -49,7 +54,7 @@ def processed_image_pub():
             #error2 = Images[1].dir  
             #error3 = Images[2].dir
             #error4 = Images[3].dir  #error of furthest part of line
-
+            slope =0
             if Images[3].x_coord and Images[0].x_coord:
                 slope = (Images[3].x_coord - Images[0].x_coord)/180.0
                 print('Slope: ', slope)
@@ -57,7 +62,8 @@ def processed_image_pub():
                 rospy.loginfo("Could not detect contours")
             
             theta = round(math.degrees(math.atan(slope)), 2)
-            delta=int(Images[1].middleX-Images[1].contourCenterX)
+            delta=0
+            #delta=int(Images[1].middleX-Images[1].contourCenterX)
             fm = RepackImages(Images)
             t2 = time.clock()
             cv2.putText(fm, "Time: " + str((t2-t1)*1000) + " ms", (10, 470), font, 0.5, (0,0,255), 1, cv2.LINE_AA)

@@ -33,14 +33,14 @@ void straight(float rpmr,float rpml)
     digitalWrite(flDirn2, LOW);
     digitalWrite(frDirn1, HIGH);
     digitalWrite(frDirn2, LOW);
-    analogWrite(flSpeed, int(FL*rpml));
-    analogWrite(frSpeed, int(FR*rpmr));
+    analogWrite(flSpeed, (int)(FL*rpml));
+    analogWrite(frSpeed, (int)(FR*rpmr));
     digitalWrite(blDirn1, HIGH);
     digitalWrite(blDirn2, LOW);
     digitalWrite(brDirn1, HIGH);
     digitalWrite(brDirn2, LOW);
-    analogWrite(blSpeed, int(BL*rpml));
-    analogWrite(brSpeed, int(BR*rpmr));
+    analogWrite(blSpeed, (int)(BL*rpml));
+    analogWrite(brSpeed, (int)(BR*rpmr));
 }
 
 void backward(float rpmr,float rpml)

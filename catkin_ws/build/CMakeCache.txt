@@ -364,6 +364,12 @@ process_image_BINARY_DIR:STATIC=/home/faizansid/catkin_ws/build/process_image
 //Value Computed by CMake
 process_image_SOURCE_DIR:STATIC=/home/faizansid/catkin_ws/src/process_image
 
+//Value Computed by CMake
+process_image_rot_BINARY_DIR:STATIC=/home/faizansid/catkin_ws/build/process_image_rot
+
+//Value Computed by CMake
+process_image_rot_SOURCE_DIR:STATIC=/home/faizansid/catkin_ws/src/process_image_rot
+
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/kinetic/share/rosconsole/cmake
 
