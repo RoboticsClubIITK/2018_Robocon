@@ -98,16 +98,29 @@ void loop()
 #include <std_msgs/Float64.h>
 #include <math.h>
 
-#define FR 0.66
-#define FL 2.05
-#define BR 2.20
-#define BL 1.90
 
-float Kp=0.25;
+#define FR 0.56
+#define FL 2.05
+#define BR 1.80
+#define BL 1.90
+/*
+Works oascillating in this
+float Kp=0.05;
 float Ki=0.0;
 float Kd=0.0;
+int iter=0;
 
-int maxRPM= 255;
+int maxRPM= 200;
+int baseRPM=50;
+*/
+
+
+float Kp=0.07;
+float Ki=0.01;
+float Kd=0.0;
+int iter=0;
+
+int maxRPM= 200;
 int baseRPM=70;
 
 #define flSpeed  3
@@ -136,8 +149,14 @@ int limRPM(int rpm)
     {
         return maxRPM;
     }
+    else if (rpm<0)
+        return 0;
     return rpm;
+
 }
+
+
+
 
 void reset()
 {
@@ -169,6 +188,27 @@ void move(float rpmr,float rpml)
     digitalWrite(brDirn2, LOW);
     analogWrite(blSpeed, limRPM((int)(BL*rpml)));
     analogWrite(brSpeed, limRPM((int)(BR*rpmr)));
+
+    char res1[8];
+    dtostrf(limRPM((int)(FL*rpml)), 6, 2, res1);
+    //nh.loginfo("FL");
+    nh.loginfo(res1);
+    char res2[8];
+    dtostrf(limRPM((int)(FR*rpmr)), 6, 2, res2);
+    //nh.loginfo("FR");
+    nh.loginfo(res2);
+    char res3[8];
+    dtostrf(limRPM((int)(BL*rpml)), 6, 2, res3);
+    //nh.loginfo("BL");
+    nh.loginfo(res3);
+    char res4[8];
+    dtostrf(limRPM((int)(BR*rpmr)), 6, 2, res4);
+    //nh.loginfo("BR");
+    nh.loginfo(res4);
+    nh.loginfo("\n");
+    nh.loginfo("\n");
+
+
 }
 
 void sideway_right(float rpmr,float rpml)
@@ -239,15 +279,25 @@ void sideway_left(float rpmr,float rpml)
 void distance_callback(const std_msgs::Float64 &dist)
 {
     float distance = dist.data;
-    error=-distance;
+
+    char res[8];
+    dtostrf(distance, 6, 2, res);
+    //nh.loginfo("Distance");
+    nh.loginfo(res);
+    
+    error=distance;
 
     float rpm = Kp * error + Kd * (error - lastError) + Ki*( error + lastError );
     lastError = error;
 
+
     float rpmr=baseRPM-rpm;
     float rpml=baseRPM+rpm;
-
+    iter=iter+1;
     move(rpmr,rpml);
+    char iterst[8];
+    dtostrf(iter,6,2,iterst);
+    nh.loginfo(iterst);
 }
 
 //ros::Subscriber<std_msgs::Float64> sub_angle("/robocon2018/angle", &angle_callback);

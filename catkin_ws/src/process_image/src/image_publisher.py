@@ -16,12 +16,12 @@ rotCon=0
 cameraNum=1
 
 def processed_image_pub():
-    pub_image = rospy.Publisher('/robocon2018/image_raw', Image, queue_size=10)
-    pub_angle = rospy.Publisher('/robocon2018/angle', Float64, queue_size=10)
-    pub_distance = rospy.Publisher('/robocon2018/distance', Float64, queue_size=10)
+    pub_image = rospy.Publisher('/robocon2018/image_raw', Image, queue_size=1)
+    pub_angle = rospy.Publisher('/robocon2018/angle', Float64, queue_size=1)
+    pub_distance = rospy.Publisher('/robocon2018/distance', Float64, queue_size=1)
 
     rospy.init_node('process_image_node', anonymous=False)
-    rate = rospy.Rate(15)
+    rate = rospy.Rate(30)
     
     ############################IP HERE######################################
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -64,7 +64,7 @@ def processed_image_pub():
             
             theta = round(math.atan(slope), 2)
             delta=0
-            #delta=int(Images[1].middleX-Images[1].contourCenterX)
+            delta=int(Images[1].middleX-Images[3].contourCenterX)
             fm = RepackImages(Images)
             t2 = time.clock()
             cv2.putText(fm, "Time: " + str((t2-t1)*1000) + " ms", (10, 470), font, 0.5, (0,0,255), 1, cv2.LINE_AA)
