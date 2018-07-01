@@ -1,8 +1,8 @@
 import cv2 as cv 
 import numpy as np
-low=(70,80,50)
+low=(50,20,5)
 upp=(150,150,150)
-cap=cv.VideoCapture(3)
+cap=cv.VideoCapture(1)
 cv.namedWindow('Frame',cv.WINDOW_FULLSCREEN)
 cv.namedWindow('Mask',cv.WINDOW_FULLSCREEN)
 while True:

@@ -13,6 +13,7 @@ import time
 import math
 
 rotCon=0
+cameraNum=1
 
 def processed_image_pub():
     pub_image = rospy.Publisher('/robocon2018/image_raw', Image, queue_size=10)
@@ -30,7 +31,7 @@ def processed_image_pub():
     for q in range(N_SLICES):
         Images.append(Image_process())
 
-    capture = cv2.VideoCapture(0)
+    capture = cv2.VideoCapture(cameraNum)
     br = CvBridge()
     it = 1
 
@@ -61,7 +62,7 @@ def processed_image_pub():
             else:
                 rospy.loginfo("Could not detect contours")
             
-            theta = round(math.degrees(math.atan(slope)), 2)
+            theta = round(math.atan(slope), 2)
             delta=0
             #delta=int(Images[1].middleX-Images[1].contourCenterX)
             fm = RepackImages(Images)

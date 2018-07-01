@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/faizansid/catkin_ws/build/arduino/firmware
 include CMakeFiles/line-upload.dir/progress.make
 
 CMakeFiles/line-upload: /home/faizansid/catkin_ws/devel/share/arduino/line.elf
-	/usr/share/arduino/hardware/tools/avrdude -C/usr/share/arduino/hardware/tools/avrdude.conf -patmega2560 -cwiring -b115200 -P/dev/ttyACM3 -D -V -Uflash:w:/home/faizansid/catkin_ws/devel/share/arduino/line.hex -Ueeprom:w:/home/faizansid/catkin_ws/devel/share/arduino/line.eep:i
+	/usr/share/arduino/hardware/tools/avrdude -C/usr/share/arduino/hardware/tools/avrdude.conf -patmega2560 -cwiring -b115200 -P/dev/ttyACM0 -D -V -Uflash:w:/home/faizansid/catkin_ws/devel/share/arduino/line.hex -Ueeprom:w:/home/faizansid/catkin_ws/devel/share/arduino/line.eep:i
 
 line-upload: CMakeFiles/line-upload
 line-upload: CMakeFiles/line-upload.dir/build.make

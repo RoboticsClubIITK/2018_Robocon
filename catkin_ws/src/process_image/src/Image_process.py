@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-low=(70,80,50)
+low=(50,20,5)
 upp=(150,150,150)
 class Image_process:
     

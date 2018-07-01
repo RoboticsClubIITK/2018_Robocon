@@ -1,0 +1,8 @@
+prefix=/home/faizansid/catkin_ws/devel
+
+Name: process_image_rot
+Description: Description of process_image_rot
+Version: 0.0.0
+Cflags: -I/home/faizansid/catkin_ws/src/process_image_rot/include
+Libs: -L/home/faizansid/catkin_ws/devel/lib -lprocess_image
+Requires: cv_bridge image_transport roscpp rospy sensor_msgs std_msgs
