@@ -96,6 +96,7 @@ void loop()
 #include <ros.h>
 #include <Arduino.h>
 #include <std_msgs/Float64.h>
+#include <std_msgs/Int32.h>
 #include <math.h>
 
 
@@ -138,6 +139,7 @@ int baseRPM=70;
 
 float angle;
 float distance;
+float rotCon=0;
 int error=0;
 int lastError=0;
 
@@ -192,25 +194,68 @@ void move(float rpmr,float rpml)
     char res1[8];
     dtostrf(limRPM((int)(FL*rpml)), 6, 2, res1);
     //nh.loginfo("FL");
-    nh.loginfo(res1);
+    //nh.loginfo(res1);
     char res2[8];
     dtostrf(limRPM((int)(FR*rpmr)), 6, 2, res2);
     //nh.loginfo("FR");
-    nh.loginfo(res2);
+    //nh.loginfo(res2);
     char res3[8];
     dtostrf(limRPM((int)(BL*rpml)), 6, 2, res3);
     //nh.loginfo("BL");
-    nh.loginfo(res3);
+    //nh.loginfo(res3);
     char res4[8];
     dtostrf(limRPM((int)(BR*rpmr)), 6, 2, res4);
     //nh.loginfo("BR");
-    nh.loginfo(res4);
-    nh.loginfo("\n");
-    nh.loginfo("\n");
+    //nh.loginfo(res4);
+    //nh.loginfo("\n");
+    //nh.loginfo("\n");
 
 
 }
 
+void move_sideway(float rpmfr,float rpmbr)
+{
+    //fr&bl motion: moves right
+    //br&fl motion: moves left
+
+
+    digitalWrite(flDirn1, HIGH);
+    digitalWrite(flDirn2, LOW);
+    digitalWrite(frDirn1, LOW);
+    digitalWrite(frDirn2, HIGH);
+    analogWrite(flSpeed, limRPM((int)(FL*rpmbr)));
+    analogWrite(frSpeed, limRPM((int)(FR*rpmfr)));
+    digitalWrite(blDirn1, LOW);
+    digitalWrite(blDirn2, HIGH);
+    digitalWrite(brDirn1, HIGH);
+    digitalWrite(brDirn2, LOW);
+    analogWrite(blSpeed, limRPM((int)(BL*rpmfr)));
+    analogWrite(brSpeed, limRPM((int)(BR*rpmbr)));
+
+    char res1[8];
+    dtostrf(limRPM((int)(FL*rpmbr)), 6, 2, res1);
+    //nh.loginfo("FL");
+    //nh.loginfo(res1);
+    char res2[8];
+    dtostrf(limRPM((int)(FR*rpmfr)), 6, 2, res2);
+    //nh.loginfo("FR");
+    //nh.loginfo(res2);
+    char res3[8];
+    dtostrf(limRPM((int)(BL*rpmfr)), 6, 2, res3);
+    //nh.loginfo("BL");
+    //nh.loginfo(res3);
+    char res4[8];
+    dtostrf(limRPM((int)(BR*rpmbr)), 6, 2, res4);
+    //nh.loginfo("BR");
+    //nh.loginfo(res4);
+    //nh.loginfo("\n");
+    //nh.loginfo("\n");
+
+
+}
+
+
+/*
 void sideway_right(float rpmr,float rpml)
 {
     digitalWrite(flDirn1, HIGH);
@@ -242,10 +287,11 @@ void sideway_left(float rpmr,float rpml)
     analogWrite(blSpeed, limRPM((int)(BL*rpml)));
     analogWrite(brSpeed, limRPM((int)(BR*rpmr)));
 }
+*/
 
 /*void distance_callback(const std_msgs::Float64 &dist)
 {
-    float distance = dist.data;
+    distance = dist.data;
     //nh.loginfo("Dist: %f",val);
 
     int distlim = 10;
@@ -272,18 +318,22 @@ void sideway_left(float rpmr,float rpml)
 
 //void angle_callback(const std_msgs::Float64 &theta)
 
-    //float angle = theta.data;
+    //angle = theta.data;
     //nh.loginfo("Angle: %f",val);
 
 
 void distance_callback(const std_msgs::Float64 &dist)
 {
-    float distance = dist.data;
+    //fr&bl motion: moves right
+    //br&fl motion: moves left
+    
+    
+    distance = dist.data;
 
     char res[8];
     dtostrf(distance, 6, 2, res);
     //nh.loginfo("Distance");
-    nh.loginfo(res);
+    //nh.loginfo(res);
     
     error=distance;
 
@@ -297,12 +347,42 @@ void distance_callback(const std_msgs::Float64 &dist)
     move(rpmr,rpml);
     char iterst[8];
     dtostrf(iter,6,2,iterst);
-    nh.loginfo(iterst);
+    //nh.loginfo(iterst);
+}
+
+void distance_rot_callback(const std_msgs::Float64 &dist)
+{
+    distance = dist.data;
+
+    char res[8];
+    dtostrf(distance, 6, 2, res);
+    //nh.loginfo("Distance");
+    //nh.loginfo(res);
+
+    error=distance;
+
+    float rpm = Kp * error + Kd * (error - lastError) + Ki*( error + lastError );
+    lastError = error;
+
+
+    float rpmr=baseRPM-rpm;
+    float rpml=baseRPM+rpm;
+    iter=iter+1;
+    move_sideway(rpmr,rpml);
+    char iterst[8];
+    dtostrf(iter,6,2,iterst);
+    //nh.loginfo(iterst);
+}
+
+void rotation_callback(const std_msgs::Int32 &rot)
+{
+    rotCon = rot.data;
 }
 
 //ros::Subscriber<std_msgs::Float64> sub_angle("/robocon2018/angle", &angle_callback);
 ros::Subscriber<std_msgs::Float64> sub_distance("/robocon2018/distance", &distance_callback);
-
+ros::Subscriber<std_msgs::Float64> sub_distance_rot("/robocon2018/distance", &distance_rot_callback);
+ros::Subscriber<std_msgs::Int32> sub_rotcon("/robocon2018/rotation", &rotation_callback);
 
 void setup()
 {
@@ -324,8 +404,14 @@ void setup()
     nh.initNode();
     //nh.subscribe(sub_angle);
     
-    nh.subscribe(sub_distance);
-    //nh.subcribe(sub_rotcon);
+    char rott[8];
+    nh.subscribe(sub_rotcon);
+    dtostrf(rotCon,6,2,rott);
+    nh.loginfo(rott);
+    if(rotCon==0)
+        nh.subscribe(sub_distance);
+    else if (rotCon==1)
+        nh.subscribe(sub_distance_rot);
 }
 
 void loop()
