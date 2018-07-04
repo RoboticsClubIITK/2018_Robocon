@@ -13,7 +13,7 @@ from Utils import *
 import time
 import math
 
-rotCon=1
+rotCon=0
 cameraNum=1
 
 def processed_image_pub():
@@ -39,7 +39,7 @@ def processed_image_pub():
     while not rospy.is_shutdown():
         flag, img = capture.read()
         if rotCon:
-            img=imutils.rotate_bound(img,90)
+            img=imutils.rotate_bound(img,270)
         
         direction = 0
         img = RemoveBackground(img, False)
@@ -65,7 +65,7 @@ def processed_image_pub():
             
             theta = round(math.atan(slope), 2)
             delta=0
-            delta=int(Images[1].middleX-Images[3].contourCenterX)
+            delta=int(Images[3].middleX-Images[3].contourCenterX)
             fm = RepackImages(Images)
             t2 = time.clock()
             cv2.putText(fm, "Time: " + str((t2-t1)*1000) + " ms", (10, 470), font, 0.5, (0,0,255), 1, cv2.LINE_AA)

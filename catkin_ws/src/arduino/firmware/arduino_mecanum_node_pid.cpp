@@ -100,10 +100,10 @@ void loop()
 #include <math.h>
 
 
-#define FR 0.56
-#define FL 2.05
-#define BR 1.80
-#define BL 1.90
+#define FR 0.64
+#define FL 1.62
+#define BR 1.65
+#define BL 1.93
 /*
 Works oascillating in this
 float Kp=0.05;
@@ -115,14 +115,35 @@ int maxRPM= 200;
 int baseRPM=50;
 */
 
-
-float Kp=0.07;
-float Ki=0.01;
-float Kd=0.0;
+//good following slow speed
+/*float Kp=0.2;
+float Ki=0.0125;
+float Kd=1.35;
 int iter=0;
 
 int maxRPM= 200;
 int baseRPM=70;
+*/
+
+
+//good following high speed
+/*
+float Kp=0.1;
+float Ki=0.0;
+float Kd=1.0;
+int iter=0;
+
+int maxRPM= 255;
+int baseRPM=120;
+*/
+
+float Kp=0.1;
+float Ki=0.0;
+float Kd=1.0;
+int iter=0;
+
+int maxRPM= 255;
+int baseRPM=120;
 
 #define flSpeed  3
 #define flDirn1  24
@@ -219,16 +240,16 @@ void move_sideway(float rpmfr,float rpmbr)
     //br&fl motion: moves left
 
 
-    digitalWrite(flDirn1, HIGH);
-    digitalWrite(flDirn2, LOW);
-    digitalWrite(frDirn1, LOW);
-    digitalWrite(frDirn2, HIGH);
+    digitalWrite(flDirn1, LOW);
+    digitalWrite(flDirn2, HIGH);
+    digitalWrite(frDirn1, HIGH);
+    digitalWrite(frDirn2, LOW);
     analogWrite(flSpeed, limRPM((int)(FL*rpmbr)));
     analogWrite(frSpeed, limRPM((int)(FR*rpmfr)));
-    digitalWrite(blDirn1, LOW);
-    digitalWrite(blDirn2, HIGH);
-    digitalWrite(brDirn1, HIGH);
-    digitalWrite(brDirn2, LOW);
+    digitalWrite(blDirn1, HIGH);
+    digitalWrite(blDirn2, LOW);
+    digitalWrite(brDirn1, LOW);
+    digitalWrite(brDirn2, HIGH);
     analogWrite(blSpeed, limRPM((int)(BL*rpmfr)));
     analogWrite(brSpeed, limRPM((int)(BR*rpmbr)));
 
@@ -408,10 +429,10 @@ void setup()
     nh.subscribe(sub_rotcon);
     dtostrf(rotCon,6,2,rott);
     nh.loginfo(rott);
-    if(rotCon==0)
+    //if(rotCon==0)
         nh.subscribe(sub_distance);
-    else if (rotCon==1)
-        nh.subscribe(sub_distance_rot);
+    //else if (rotCon==1)
+       // nh.subscribe(sub_distance_rot);
 }
 
 void loop()
