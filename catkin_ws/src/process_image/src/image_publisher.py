@@ -3,7 +3,7 @@
 import rospy
 from sensor_msgs.msg import Image
 from std_msgs.msg import Float64
-from std_msgs.msg import Int32
+from std_msgs.msg import Bool
 from cv_bridge import CvBridge
 import cv2
 import imutils
@@ -13,14 +13,14 @@ from Utils import *
 import time
 import math
 
-rotCon=0
+rotCon=True
 cameraNum=1
 
 def processed_image_pub():
     pub_image = rospy.Publisher('/robocon2018/image_raw', Image, queue_size=10)
     pub_angle = rospy.Publisher('/robocon2018/angle', Float64, queue_size=10)
     pub_distance = rospy.Publisher('/robocon2018/distance', Float64, queue_size=10)
-    pub_rotation = rospy.Publisher('/robocon2018/rotation', Float64, queue_size=10)
+    pub_rotation = rospy.Publisher('/robocon2018/rotation', Bool, queue_size=10)
     rospy.init_node('process_image_node', anonymous=False)
     rate = rospy.Rate(30)
     
@@ -63,12 +63,13 @@ def processed_image_pub():
             else:
                 rospy.loginfo("Could not detect contours")
             
-            theta = round(math.atan(slope), 2)
+            theta = round(math.atan(slope)*57.2958, 2)
             delta=0
-            delta=int(Images[3].middleX-Images[3].contourCenterX)
+            delta=int(Images[2].middleX-Images[2].contourCenterX)
             fm = RepackImages(Images)
             t2 = time.clock()
-            cv2.putText(fm, "Time: " + str((t2-t1)*1000) + " ms", (10, 470), font, 0.5, (0,0,255), 1, cv2.LINE_AA)
+            
+            #cv2.putText(fm, "Angle: " + str(theta) , (10, 470), font, 1.5, (0,0,255), 2, cv2.LINE_AA)
             
             # for i in range(N_SLICES):
             #     cv2.imshow("part %d" % i, Images[i].image)
