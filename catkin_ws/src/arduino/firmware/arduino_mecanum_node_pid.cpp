@@ -96,7 +96,7 @@ void loop()
 #include <ros.h>
 #include <Arduino.h>
 #include <std_msgs/Float64.h>
-#include <std_msgs/Bool.h>
+#include <std_msgs/Int32.h>
 #include <math.h>
 
 
@@ -145,9 +145,10 @@ int maxRPM= 255;
 int baseRPM=120;
 */
 
-float Kp=0.1;
-float Ki=0.0;
-float Kd=3.0;
+float Kp=0.8;
+float Ki=0.0;ls
+
+float Kd=1.2;
 int iter=0;
 
 int maxRPM= 255;
@@ -168,7 +169,7 @@ int baseRPM=120;
 
 float angle;
 float distance;
-bool rotCon=false;
+int rotCon=0;
 int error=0;
 int lastError=0;
 
@@ -254,13 +255,15 @@ void move_sideway(float rpmbr,float rpmfr)
     digitalWrite(frDirn1, HIGH);
     digitalWrite(frDirn2, LOW);
     analogWrite(flSpeed, limRPM((int)(SFL*rpmfr)));
-    analogWrite(frSpeed, limRPM((int)(SFR*rpmfr)));
+    //analogWrite(frSpeed, limRPM((int)(SFR*rpmfr)));
+    analogWrite(frSpeed, limRPM(FR*baseRPM));
     digitalWrite(blDirn1, HIGH);
     digitalWrite(blDirn2, LOW);
     digitalWrite(brDirn1, LOW);
     digitalWrite(brDirn2, HIGH);
     analogWrite(blSpeed, limRPM((int)(SBL*rpmbr)));
-    analogWrite(brSpeed, limRPM((int)(SBR*rpmbr)));
+    //analogWrite(brSpeed, limRPM((int)(SBR*rpmbr)));
+    analogWrite(brSpeed, limRPM(BR*baseRPM));
 
     char res1[8];
     dtostrf(limRPM((int)(FL*rpmbr)), 6, 2, res1);
@@ -439,7 +442,7 @@ void angle_rot_callback(const std_msgs::Float64 &ang)
 }
 */
 
-void rotation_callback(const std_msgs::Bool &rot)
+void rotation_callback(const std_msgs::Int32 &rot)
 {
     //char rott[8];
     rotCon = rot.data;
@@ -451,7 +454,7 @@ void rotation_callback(const std_msgs::Bool &rot)
 ros::Subscriber<std_msgs::Float64> sub_distance("/robocon2018/distance", &distance_callback);
 ros::Subscriber<std_msgs::Float64> sub_distance_rot("/robocon2018/distance", &distance_rot_callback);
 //ros::Subscriber<std_msgs::Float64> sub_angle_rot("/robocon2018/angle", &angle_rot_callback);
-ros::Subscriber<std_msgs::Bool> sub_rotcon("/robocon2018/rotation", &rotation_callback);
+ros::Subscriber<std_msgs::Int32> sub_rotcon("/robocon2018/rotation", &rotation_callback);
 
 void setup()
 {
