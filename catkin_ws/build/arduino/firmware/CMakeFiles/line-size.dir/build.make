@@ -55,7 +55,7 @@ include CMakeFiles/line-size.dir/progress.make
 
 CMakeFiles/line-size: /home/raunaks/catkin_ws/devel/share/arduino/line.elf
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Calculating line image size"
-	/usr/bin/cmake -DFIRMWARE_IMAGE=/home/raunaks/catkin_ws/devel/share/arduino/line.elf -DMCU=atmega328p -DEEPROM_IMAGE=/home/raunaks/catkin_ws/devel/share/arduino/line.eep -P /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/FirmwareSize.cmake
+	/usr/bin/cmake -DFIRMWARE_IMAGE=/home/raunaks/catkin_ws/devel/share/arduino/line.elf -DMCU=atmega2560 -DEEPROM_IMAGE=/home/raunaks/catkin_ws/devel/share/arduino/line.eep -P /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/FirmwareSize.cmake
 
 line-size: CMakeFiles/line-size
 line-size: CMakeFiles/line-size.dir/build.make

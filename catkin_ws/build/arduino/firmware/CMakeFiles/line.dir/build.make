@@ -57,28 +57,28 @@ include CMakeFiles/line.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/line.dir/flags.make
 
-CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj: CMakeFiles/line.dir/flags.make
-CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj: /home/raunaks/catkin_ws/src/arduino/firmware/arduino_mecanum_node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj"
-	/usr/bin/avr-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj -c /home/raunaks/catkin_ws/src/arduino/firmware/arduino_mecanum_node.cpp
+CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj: CMakeFiles/line.dir/flags.make
+CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj: /home/raunaks/catkin_ws/src/arduino/firmware/arduino_mecanum_node_pid.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj"
+	/usr/bin/avr-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj -c /home/raunaks/catkin_ws/src/arduino/firmware/arduino_mecanum_node_pid.cpp
 
-CMakeFiles/line.dir/arduino_mecanum_node.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/line.dir/arduino_mecanum_node.cpp.i"
-	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/raunaks/catkin_ws/src/arduino/firmware/arduino_mecanum_node.cpp > CMakeFiles/line.dir/arduino_mecanum_node.cpp.i
+CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.i"
+	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/raunaks/catkin_ws/src/arduino/firmware/arduino_mecanum_node_pid.cpp > CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.i
 
-CMakeFiles/line.dir/arduino_mecanum_node.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/line.dir/arduino_mecanum_node.cpp.s"
-	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/raunaks/catkin_ws/src/arduino/firmware/arduino_mecanum_node.cpp -o CMakeFiles/line.dir/arduino_mecanum_node.cpp.s
+CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.s"
+	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/raunaks/catkin_ws/src/arduino/firmware/arduino_mecanum_node_pid.cpp -o CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.s
 
-CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj.requires:
+CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj.requires:
 
-.PHONY : CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj.requires
+.PHONY : CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj.requires
 
-CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj.provides: CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj.requires
-	$(MAKE) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj.provides.build
-.PHONY : CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj.provides
+CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj.provides: CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj.requires
+	$(MAKE) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj.provides.build
+.PHONY : CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj.provides
 
-CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj.provides.build: CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj
+CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj.provides.build: CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj
 
 
 CMakeFiles/line.dir/home/raunaks/catkin_ws/build/arduino/ros_lib/time.cpp.obj: CMakeFiles/line.dir/flags.make
@@ -107,16 +107,16 @@ CMakeFiles/line.dir/home/raunaks/catkin_ws/build/arduino/ros_lib/time.cpp.obj.pr
 
 # Object files for target line
 line_OBJECTS = \
-"CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj" \
+"CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj" \
 "CMakeFiles/line.dir/home/raunaks/catkin_ws/build/arduino/ros_lib/time.cpp.obj"
 
 # External object files for target line
 line_EXTERNAL_OBJECTS =
 
-/home/raunaks/catkin_ws/devel/share/arduino/line.elf: CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj
+/home/raunaks/catkin_ws/devel/share/arduino/line.elf: CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj
 /home/raunaks/catkin_ws/devel/share/arduino/line.elf: CMakeFiles/line.dir/home/raunaks/catkin_ws/build/arduino/ros_lib/time.cpp.obj
 /home/raunaks/catkin_ws/devel/share/arduino/line.elf: CMakeFiles/line.dir/build.make
-/home/raunaks/catkin_ws/devel/share/arduino/line.elf: libuno_CORE.a
+/home/raunaks/catkin_ws/devel/share/arduino/line.elf: libmega2560_CORE.a
 /home/raunaks/catkin_ws/devel/share/arduino/line.elf: CMakeFiles/line.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /home/raunaks/catkin_ws/devel/share/arduino/line.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/line.dir/link.txt --verbose=$(VERBOSE)
@@ -125,14 +125,14 @@ line_EXTERNAL_OBJECTS =
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating HEX image"
 	/usr/bin/avr-objcopy -O ihex -R .eeprom /home/raunaks/catkin_ws/devel/share/arduino/line.elf /home/raunaks/catkin_ws/devel/share/arduino/line.hex
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Calculating image size"
-	/usr/bin/cmake -DFIRMWARE_IMAGE=/home/raunaks/catkin_ws/devel/share/arduino/line.elf -DMCU=atmega328p -DEEPROM_IMAGE=/home/raunaks/catkin_ws/devel/share/arduino/line.eep -P /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/FirmwareSize.cmake
+	/usr/bin/cmake -DFIRMWARE_IMAGE=/home/raunaks/catkin_ws/devel/share/arduino/line.elf -DMCU=atmega2560 -DEEPROM_IMAGE=/home/raunaks/catkin_ws/devel/share/arduino/line.eep -P /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/FirmwareSize.cmake
 
 # Rule to build all files generated by this target.
 CMakeFiles/line.dir/build: /home/raunaks/catkin_ws/devel/share/arduino/line.elf
 
 .PHONY : CMakeFiles/line.dir/build
 
-CMakeFiles/line.dir/requires: CMakeFiles/line.dir/arduino_mecanum_node.cpp.obj.requires
+CMakeFiles/line.dir/requires: CMakeFiles/line.dir/arduino_mecanum_node_pid.cpp.obj.requires
 CMakeFiles/line.dir/requires: CMakeFiles/line.dir/home/raunaks/catkin_ws/build/arduino/ros_lib/time.cpp.obj.requires
 
 .PHONY : CMakeFiles/line.dir/requires

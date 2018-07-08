@@ -41,7 +41,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/upload.dir/DependInfo.cmake"
-  "CMakeFiles/uno_CORE.dir/DependInfo.cmake"
+  "CMakeFiles/mega2560_CORE.dir/DependInfo.cmake"
   "CMakeFiles/line.dir/DependInfo.cmake"
   "CMakeFiles/line-size.dir/DependInfo.cmake"
   "CMakeFiles/line-upload.dir/DependInfo.cmake"

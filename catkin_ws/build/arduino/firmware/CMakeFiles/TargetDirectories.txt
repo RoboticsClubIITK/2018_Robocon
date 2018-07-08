@@ -1,7 +1,7 @@
 /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/edit_cache.dir
 /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/rebuild_cache.dir
 /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/upload.dir
-/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/uno_CORE.dir
+/home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/mega2560_CORE.dir
 /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/line.dir
 /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/line-size.dir
 /home/raunaks/catkin_ws/build/arduino/firmware/CMakeFiles/line-upload.dir

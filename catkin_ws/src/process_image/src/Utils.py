@@ -5,7 +5,7 @@ from Image_process import *
 
 def SlicePart(im, images, slices):
     height, width = im.shape[:2]
-    sl = int(height/slices);
+    sl = int(height/slices)
     
     for i in range(slices):
         part = sl*i
@@ -33,7 +33,7 @@ def Center(moments):
     return x, y
     
 def RemoveBackground(image, b):
-    up = 100
+    up = 130
     # create NumPy arrays from the boundaries
     lower = np.array([0, 0, 0], dtype = "uint8")
     upper = np.array([up, up, up], dtype = "uint8")

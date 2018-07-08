@@ -3,21 +3,27 @@
 import rospy
 from sensor_msgs.msg import Image
 from std_msgs.msg import Float64
+from std_msgs.msg import Int32
 from cv_bridge import CvBridge
 import cv2
+import imutils
 
 from Image_process import *
 from Utils import *
+from detect_cross_simple import *
 import time
 import math
+
+rotCon=1
+cameraNum=1
 
 def processed_image_pub():
     pub_image = rospy.Publisher('/robocon2018/image_raw', Image, queue_size=10)
     pub_angle = rospy.Publisher('/robocon2018/angle', Float64, queue_size=10)
     pub_distance = rospy.Publisher('/robocon2018/distance', Float64, queue_size=10)
-
+    pub_rotation = rospy.Publisher('/robocon2018/rotation', Int32, queue_size=10)
     rospy.init_node('process_image_node', anonymous=False)
-    rate = rospy.Rate(15)
+    rate = rospy.Rate(30)
     
     ############################IP HERE######################################
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -27,12 +33,22 @@ def processed_image_pub():
     for q in range(N_SLICES):
         Images.append(Image_process())
 
-    capture = cv2.VideoCapture(1)
+    capture = cv2.VideoCapture(cameraNum)
     br = CvBridge()
     it = 1
 
     while not rospy.is_shutdown():
         flag, img = capture.read()
+
+        ###############################CROSS DETECTION######################
+        if detect_cross(image) == 1:
+            rotCon = 1
+        else
+            rotCon = 0
+
+        if rotCon == 1:
+            img=imutils.rotate_bound(img,270)
+        ####################################################################
         
         direction = 0
         img = RemoveBackground(img, False)
@@ -49,18 +65,20 @@ def processed_image_pub():
             #error2 = Images[1].dir  
             #error3 = Images[2].dir
             #error4 = Images[3].dir  #error of furthest part of line
-
+            slope =0
             if Images[3].x_coord and Images[0].x_coord:
                 slope = (Images[3].x_coord - Images[0].x_coord)/180.0
                 print('Slope: ', slope)
             else:
                 rospy.loginfo("Could not detect contours")
             
-            theta = round(math.degrees(math.atan(slope)), 2)
-            delta=int(Images[1].middleX-Images[1].contourCenterX)
+            theta = round(math.atan(slope)*57.2958, 2)
+            delta=0
+            delta=int(Images[2].middleX-Images[2].contourCenterX)
             fm = RepackImages(Images)
             t2 = time.clock()
-            cv2.putText(fm, "Time: " + str((t2-t1)*1000) + " ms", (10, 470), font, 0.5, (0,0,255), 1, cv2.LINE_AA)
+            
+            #cv2.putText(fm, "Angle: " + str(theta) , (10, 470), font, 1.5, (0,0,255), 2, cv2.LINE_AA)
             
             # for i in range(N_SLICES):
             #     cv2.imshow("part %d" % i, Images[i].image)
@@ -85,6 +103,9 @@ def processed_image_pub():
 
         rospy.loginfo('publishing distance')
         pub_distance.publish(delta)
+
+        rospy.loginfo('publishing camera rotation')
+        pub_rotation.publish(rotCon)
 
         rate.sleep()
 
