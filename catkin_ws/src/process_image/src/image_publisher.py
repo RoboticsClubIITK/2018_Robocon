@@ -14,10 +14,11 @@ from detect_cross_simple import *
 import time
 import math
 
-rotCon=1
+rotCon=0
 cameraNum=1
 
 def processed_image_pub():
+    rotCon=0
     pub_image = rospy.Publisher('/robocon2018/image_raw', Image, queue_size=10)
     pub_angle = rospy.Publisher('/robocon2018/angle', Float64, queue_size=10)
     pub_distance = rospy.Publisher('/robocon2018/distance', Float64, queue_size=10)
@@ -41,15 +42,13 @@ def processed_image_pub():
         flag, img = capture.read()
 
         ###############################CROSS DETECTION######################
-        if detect_cross(image) == 1:
+        if detect_cross(img) == 1:
             rotCon = 1
-        else
-            rotCon = 0
-
-        if rotCon == 1:
-            img=imutils.rotate_bound(img,270)
+        # else:
+        #     rotCon = 0
         ####################################################################
-        
+        if rotCon==1:
+            img=imutils.rotate_bound(img,270)
         direction = 0
         img = RemoveBackground(img, False)
 
@@ -92,6 +91,7 @@ def processed_image_pub():
             print('Angle: ', theta)
             print('Distance: ', delta)
             print('Iteration: ', it)
+            print('RotCon: ', rotCon)
 
             it = it + 1
 

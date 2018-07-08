@@ -80,38 +80,40 @@ def detect_cross(image):
 
     slopearr=[]
     flag = 0
-
-    for line in lines:
-        rho, theta = line[0]
-        a = np.cos(theta)
-        b = np.sin(theta)
-        x0 = a*rho
-        y0 = b*rho
-        x1 = int(x0+1000*(-b))
-        y1 = int(y0+1000*a)
-        x2 = int(x0-1000*(-b))
-        y2 = int(y0-1000*a)
-
-
-        if flag == 1:
-            for angle in slopearr:
-                if(abs(theta-angle) > 85*np.pi/180.0 and abs(theta-angle)<95*np.pi/180.0):
-                    line2 = line
-                    cv2.line(image, (x1,y1), (x2,y2),(0,0,255),2)
-                    flag = 2
-                    break
-        elif flag == 0:
-            flag = 1
-            line1 = line
-            cv2.line(image, (x1,y1), (x2,y2),(0,0,255),2)
-            slopearr.append(theta)
-        elif flag == 2:
-            break
-    if flag == 2:
-        [[x, y]] = intersection(line1, line2)
-        cv2.circle(image, (x, y), 3, 255, -1)
-        return 1
-    elif flag == 1:
+    if lines is None:
         return 0
+    else:
+        for line in lines:
+            rho, theta = line[0]
+            a = np.cos(theta)
+            b = np.sin(theta)
+            x0 = a*rho
+            y0 = b*rho
+            x1 = int(x0+1000*(-b))
+            y1 = int(y0+1000*a)
+            x2 = int(x0-1000*(-b))
+            y2 = int(y0-1000*a)
 
-    cv2.imshow('img', image)
+
+            if flag == 1:
+                for angle in slopearr:
+                    if(abs(theta-angle) > 85*np.pi/180.0 and abs(theta-angle)<95*np.pi/180.0):
+                        line2 = line
+                        cv2.line(image, (x1,y1), (x2,y2),(0,0,255),2)
+                        flag = 2
+                        break
+            elif flag == 0:
+                flag = 1
+                line1 = line
+                cv2.line(image, (x1,y1), (x2,y2),(0,0,255),2)
+                slopearr.append(theta)
+            elif flag == 2:
+                break
+        if flag == 2:
+            [[x, y]] = intersection(line1, line2)
+            cv2.circle(image, (x, y), 3, 255, -1)
+            return 1
+        elif flag == 1:
+            return 0
+
+        cv2.imshow('img', image)

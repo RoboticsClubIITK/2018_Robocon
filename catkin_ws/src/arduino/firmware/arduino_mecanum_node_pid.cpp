@@ -118,10 +118,25 @@ int maxRPM= 255;
 int baseRPM=120;
 */
 
-float Kp=0.8;
-float Ki=0.0;
 
-float Kd=1.2;
+
+//good follwoing sideway high speed
+// float Kp=0.8;
+// float Ki=0.0;
+
+// float Kd=1.2;
+// int iter=0;
+
+// int maxRPM= 255;
+// int baseRPM=120;
+
+float Kp=0.1;
+float Ki=0.0;
+float Kd=1.0;
+
+float SKp=0.8;
+float SKi=0.0;
+float SKd=1.2;
 int iter=0;
 
 int maxRPM= 255;
@@ -332,45 +347,47 @@ void distance_callback(const std_msgs::Float64 &dist)//FORWARD_PID
     
     distance = dist.data;
 
-    char res[8];
-    dtostrf(distance, 6, 2, res);
-    //nh.loginfo("Distance");
-    //nh.loginfo(res);
+    // effect_rot_callback();
+
+    // char res[8];
+    // dtostrf(distance, 6, 2, res);
+    // //nh.loginfo("Distance");
+    // //nh.loginfo(res);
     
-    error=distance;
+    // error=distance;
 
-    float rpm = Kp * error + Kd * (error - lastError) + Ki*( error + lastError );
-    lastError = error;
+    // float rpm = Kp * error + Kd * (error - lastError) + Ki*( error + lastError );
+    // lastError = error;
 
-    float rpmr=baseRPM-rpm;
-    float rpml=baseRPM+rpm;
-    iter=iter+1;
-    move(rpmr,rpml);
-    char iterst[8];
-    dtostrf(iter,6,2,iterst);
-    //nh.loginfo(iterst);
+    // float rpmr=baseRPM-rpm;
+    // float rpml=baseRPM+rpm;
+    // iter=iter+1;
+    // move(rpmr,rpml);
+    // char iterst[8];
+    // dtostrf(iter,6,2,iterst);
+    // //nh.loginfo(iterst);
 }
 
 void distance_rot_callback(const std_msgs::Float64 &dist)//SIDEWAYS_PID
 {
     distance = dist.data;
 
-    char res[8];
-    dtostrf(distance, 6, 2, res);
-    //nh.loginfo("Distance");
-    //nh.loginfo(res);
+    // char res[8];
+    // dtostrf(distance, 6, 2, res);
+    // //nh.loginfo("Distance");
+    // //nh.loginfo(res);
 
-    error=distance;
+    // error=distance;
 
-    float rpm = Kp * error + Kd * (error - lastError) + Ki*( error + lastError );
-    lastError = error;
+    // float rpm = Kp * error + Kd * (error - lastError) + Ki*( error + lastError );
+    // lastError = error;
 
-    float rpmr=baseRPM-rpm;
-    float rpml=baseRPM+rpm;
-    iter=iter+1;
-    move_sideway(rpmr,rpml);
-    char iterst[8];
-    dtostrf(iter,6,2,iterst);
+    // float rpmr=baseRPM-rpm;
+    // float rpml=baseRPM+rpm;
+    // iter=iter+1;
+    // move_sideway(rpmr,rpml);
+    // char iterst[8];
+    // dtostrf(iter,6,2,iterst);
     //nh.loginfo(iterst);
 }
 
@@ -397,16 +414,53 @@ void angle_rot_callback(const std_msgs::Float64 &ang)
     //nh.loginfo(iterst);
 }
 */
-void effect_rot_callback(int rotCon)
+void effect_rot_callback()
 {
     if(rotCon == 1)
     {
-        nh.subscribe(sub_distance);
+        char res[8];
+        dtostrf(distance, 6, 2, res);
+        //nh.loginfo("Distance");
+        //nh.loginfo(res);
+
+        error=distance;
+
+        float rpm = SKp * error + SKd * (error - lastError) + SKi*( error + lastError );
+        lastError = error;
+
+        float rpmr=baseRPM-rpm;
+        float rpml=baseRPM+rpm;
+        iter=iter+1;
+        move_sideway(rpmr,rpml);
+        char iterst[8];
+        dtostrf(iter,6,2,iterst);
+        //nh.loginfo(iterst);
     }
     else if(rotCon == 0)
     {
-        nh.subscribe(sub_distance_rot);
+            //fr&bl motion: moves right
+    //br&fl motion: moves left
+
+        char res[8];
+        dtostrf(distance, 6, 2, res);
+        //nh.loginfo("Distance");
+        //nh.loginfo(res);
+        
+        error=distance;
+
+        float rpm = Kp * error + Kd * (error - lastError) + Ki*( error + lastError );
+        lastError = error;
+
+        float rpmr=baseRPM-rpm;
+        float rpml=baseRPM+rpm;
+        iter=iter+1;
+        move(rpmr,rpml);
+        char iterst[8];
+        dtostrf(iter,6,2,iterst);
+        //nh.loginfo(iterst);
     }
+
+    
 }
 
 void rotation_callback(const std_msgs::Int32 &rot)
@@ -416,7 +470,7 @@ void rotation_callback(const std_msgs::Int32 &rot)
     //dtostrf(rotCon,6,2,rott);
     //nh.loginfo(rott);
 
-    effect_rot_callback(rotCon);
+    effect_rot_callback();
 }
 
 ros::Subscriber<std_msgs::Int32> sub_rotcon("/robocon2018/rotation", &rotation_callback);
@@ -441,6 +495,7 @@ void setup()
     nh.initNode();
     //nh.subscribe(sub_angle);
     
+    nh.subscribe(sub_distance);
     nh.subscribe(sub_rotcon);
     //nh.subscribe(sub_distance);
     // nh.subscribe(sub_distance_rot);

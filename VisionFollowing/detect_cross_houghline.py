@@ -74,6 +74,7 @@ while cv2.waitKey(1) & 0xff != ord('q'):
             vertical_rho.append(rho)
             cv2.line(image, (x1,y1), (x2,y2),(0,255,0),2)
 
+    if 
     h_rho = np.mean(horizontal_rho)
     v_rho = np.mean(vertical_rho)
 
