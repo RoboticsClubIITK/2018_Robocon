@@ -134,7 +134,7 @@ stdlib.h
 ros/msg.h
 /home/faizansid/catkin_ws/build/arduino/ros_lib/rosserial_msgs/ros/msg.h
 
-/home/faizansid/catkin_ws/build/arduino/ros_lib/std_msgs/Bool.h
+/home/faizansid/catkin_ws/build/arduino/ros_lib/std_msgs/Float64.h
 stdint.h
 -
 string.h
@@ -144,7 +144,7 @@ stdlib.h
 ros/msg.h
 /home/faizansid/catkin_ws/build/arduino/ros_lib/std_msgs/ros/msg.h
 
-/home/faizansid/catkin_ws/build/arduino/ros_lib/std_msgs/Float64.h
+/home/faizansid/catkin_ws/build/arduino/ros_lib/std_msgs/Int32.h
 stdint.h
 -
 string.h
@@ -177,15 +177,7 @@ Arduino.h
 -
 std_msgs/Float64.h
 -
-math.h
--
-ros.h
--
-Arduino.h
--
-std_msgs/Float64.h
--
-std_msgs/Bool.h
+std_msgs/Int32.h
 -
 math.h
 -

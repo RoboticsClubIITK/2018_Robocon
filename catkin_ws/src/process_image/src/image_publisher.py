@@ -1,4 +1,4 @@
-`#!/usr/bin/env python
+#!/usr/bin/env python
 
 import rospy
 from sensor_msgs.msg import Image
@@ -7,16 +7,19 @@ from std_msgs.msg import Int32
 from cv_bridge import CvBridge
 import cv2
 import imutils
+from datetime import datetime
 
 from Image_process import *
 from Utils import *
+from detect_cross import *
 import time
 import math
 
-rotCon=1
 cameraNum=1
 
 def processed_image_pub():
+    rotCon=0
+    sleepCon=0
     pub_image = rospy.Publisher('/robocon2018/image_raw', Image, queue_size=10)
     pub_angle = rospy.Publisher('/robocon2018/angle', Float64, queue_size=10)
     pub_distance = rospy.Publisher('/robocon2018/distance', Float64, queue_size=10)
@@ -35,17 +38,41 @@ def processed_image_pub():
     capture = cv2.VideoCapture(cameraNum)
     br = CvBridge()
     it = 1
+    start=datetime.now()
 
     while not rospy.is_shutdown():
-        flag, img = capture.read()
-        if rotCon:
+        ret, img = capture.read()
+        ###############################CROSS DETECTION######################
+        imgfil=filter(img)
+        detCon=detectIntersect(imgfil)
+        if detCon==1:
+            diff=datetime.now()-start
+            diffms=diff.days*86400000 + diff.seconds *1000 + diff.microseconds/1000
+            if (diffms)>1500:
+                start=datetime.now()
+                if rotCon==0:
+                    rotCon=1
+                elif rotCon==1:
+                    rotCon=2
+                elif rotCon==2:
+                    rotCon=3
+                    sleepCon=1
+                elif rotCon==3:
+                    rotCon=4
+                elif rotCon==4:
+                    rotCon=5
+                elif rotCon==5:
+                    rotCon=6
+                elif rotCon==6:
+                    rotCon=0
+        ####################################################################
+        if rotCon==1 or rotCon==2:
             img=imutils.rotate_bound(img,270)
-        
-        direction = 0
-        img = RemoveBackground(img, False)
+        elif rotCon==4 or rotCon==5 or rotCon==6:
+            img=imutils.rotate_bound(img,90)
+        #img = RemoveBackground(img, False)
 
         if img is not None:
-            t1 = time.clock()
             SlicePart(img, Images, N_SLICES)
             #for i in range(N_SLICES):
             #    direction += Images[i].dir
@@ -67,25 +94,23 @@ def processed_image_pub():
             delta=0
             delta=int(Images[2].middleX-Images[2].contourCenterX)
             fm = RepackImages(Images)
-            t2 = time.clock()
             
             #cv2.putText(fm, "Angle: " + str(theta) , (10, 470), font, 1.5, (0,0,255), 2, cv2.LINE_AA)
             
-            # for i in range(N_SLICES):
-            #     cv2.imshow("part %d" % i, Images[i].image)
-            #     print('error1: ', error1)
-            #     print('error2: ', error2)
-            #     print('error3: ', error3)
-            #     print('error4: ', error4, end="\n\n")
-
             # cv2.imshow("frame", fm)
 
             print('Angle: ', theta)
             print('Distance: ', delta)
             print('Iteration: ', it)
+            print('RotCon: ', rotCon)
 
             it = it + 1
 
+
+
+        rospy.loginfo('publishing camera rotation')
+        pub_rotation.publish(rotCon)
+        
         rospy.loginfo('publishing video stream')
         pub_image.publish(br.cv2_to_imgmsg(fm, "bgr8"))
 
@@ -95,8 +120,11 @@ def processed_image_pub():
         rospy.loginfo('publishing distance')
         pub_distance.publish(delta)
 
-        rospy.loginfo('publishing camera rotation')
-        pub_rotation.publish(rotCon)
+        if sleepCon==1:
+            time.sleep(3)
+            sleepCon=0
+            rotCon=4
+        
 
         rate.sleep()
 

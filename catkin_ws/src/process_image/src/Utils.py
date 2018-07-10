@@ -3,6 +3,9 @@ import cv2
 import time
 from Image_process import *
 
+low=(50,20,5)
+upp=(150,150,150)
+
 def SlicePart(im, images, slices):
     height, width = im.shape[:2]
     sl = int(height/slices)
@@ -46,3 +49,13 @@ def RemoveBackground(image, b):
         return image
     else:
         return image
+
+def filter(image):
+    blur=cv2.GaussianBlur(image,(11,11),0)#blur the grayscale image
+    hsv=cv2.cvtColor(blur,cv2.COLOR_BGR2HSV)#convert each frame to grayscale.
+    mask=cv2.inRange(hsv,low,upp)
+    #ret,th1 = cv2.threshold(mask,100,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)#using threshold remove noise
+    #ret1,th2 = cv2.threshold(th1,100,255,cv2.THRESH_BINARY_INV)# invert the pixels of the image frame
+    thresh = cv2.erode(mask, None, iterations=2)  
+    thresh = cv2.dilate(thresh, None, iterations=2)
+    return thresh
