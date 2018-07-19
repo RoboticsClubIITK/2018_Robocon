@@ -1,74 +1,3 @@
-/*
-#include <ros.h>
-#include <Arduino.h>
-#include <std_msgs/Float64.h>
-#include <math.h>
-int flSpeed = 3;
-int flDirn1 = 24;
-int flDirn2 = 25;
-int frSpeed = 2;
-int frDirn1 = 23;
-int frDirn2 = 22;
-int blSpeed = 4;
-int blDirn1 = 27;
-int blDirn2 = 26;
-int brSpeed = 5;
-int brDirn1 = 29;
-int brDirn2 = 28;
-float vd=0.75;
-int fl=205;
-int bl=190;
-int fr=66;//66//65
-int br=220;//255//250
-int flMotorSpeed,blMotorSpeed,frMotorSpeed,brMotorSpeed;
-ros::NodeHandle nh;
-void angle_callback(const std_msgs::Float64 &theta)
-{
-    float angle = theta.data;
-    //nh.loginfo("Angle: %f", val);
-    flMotorSpeed = fl*vd*sin( angle + 0.785);
-    blMotorSpeed = bl*vd*cos( angle + 0.785);
-    frMotorSpeed = fr*vd*cos( angle + 0.785);
-    brMotorSpeed = br*vd*sin( angle + 0.785);
-    digitalWrite(flDirn1, HIGH);
-    digitalWrite(flDirn2, LOW);
-    analogWrite(flSpeed, flMotorSpeed);
-    digitalWrite(blDirn1, HIGH);
-    digitalWrite(blDirn2, LOW);
-    analogWrite(blSpeed, blMotorSpeed);   
-   
-    digitalWrite(frDirn1, HIGH);
-    digitalWrite(frDirn2, LOW);
-    analogWrite(frSpeed, frMotorSpeed);
-    
-    digitalWrite(brDirn1, HIGH);
-    digitalWrite(brDirn2, LOW);
-    analogWrite(brSpeed, brMotorSpeed);
-}
-ros::Subscriber<std_msgs::Float64> sub_angle("/robocon2018/angle", &angle_callback);
-void setup()
-{  
-    pinMode(flDirn1, OUTPUT);
-    pinMode(flDirn2, OUTPUT);
-    pinMode(flSpeed, OUTPUT);
-    pinMode(frDirn1, OUTPUT);
-    pinMode(frDirn2, OUTPUT);
-    pinMode(frSpeed, OUTPUT);
-    pinMode(blDirn1, OUTPUT);
-    pinMode(blDirn2, OUTPUT);
-    pinMode(blSpeed, OUTPUT);
-    pinMode(brDirn1, OUTPUT);
-    pinMode(brDirn2, OUTPUT);
-    pinMode(brSpeed, OUTPUT);
-    nh.initNode();
-    nh.subscribe(sub_angle);
-}
-void loop() 
-{ 
-    nh.spinOnce();
-}
-*/
-
 #include <ros.h>
 #include <Arduino.h>
 #include <std_msgs/Float64.h>
@@ -81,15 +10,13 @@ void loop()
 #define BR 1.65
 #define BL 1.93
 
-#define SFR 0.83
+#define SFR 0.7
 #define SFL 1.90
-#define SBR 1.70
+#define SBR 1.95
 #define SBL 2.20
 
-
-
 /*
-Works oascillating in this
+Works oscillating in this
 float Kp=0.05;
 float Ki=0.0;
 float Kd=0.0;
@@ -118,26 +45,38 @@ int maxRPM= 255;
 int baseRPM=120;
 */
 
+/*good line following hs 2.0
+float Kp=0.14;
+float Ki=0.0;
+float Kd=2.0;
+*/
 
 
 //good follwoing sideway high speed
-// float Kp=0.8;
-// float Ki=0.0;
+// float SKp=0.8;
+// float SKi=0.0;
 
-// float Kd=1.2;
+// float SKd=1.2;
 // int iter=0;
 
 // int maxRPM= 255;
 // int baseRPM=120;
 
-float Kp=0.1;
-float Ki=0.0;
-float Kd=1.0;
-
-float SKp=0.8;
+/*good line following sideway
+float SKp=0.4;
 float SKi=0.0;
-float SKd=1.2;
+float SKd=2.0;
+*/
+
+float Kp=0.14;
+float Ki=0.0;
+float Kd=2.0;
+
+float SKp=0.4;
+float SKi=0.0;
+float SKd=2.0;
 int iter=0;
+int itt=0;
 
 int maxRPM= 255;
 int baseRPM=120;
@@ -176,9 +115,6 @@ int limRPM(int rpm)
 
 }
 
-
-
-
 void reset()
 {
     digitalWrite(flDirn1, LOW);
@@ -193,6 +129,27 @@ void reset()
     digitalWrite(brDirn2, LOW);
     analogWrite(blSpeed, 0);
     analogWrite(brSpeed, 0);
+}
+
+
+void overshoot()
+{
+    reset();
+    delay(100);
+    digitalWrite(flDirn1, LOW);
+    digitalWrite(flDirn2, HIGH);
+    digitalWrite(frDirn1, LOW);
+    digitalWrite(frDirn2, LOW);
+    analogWrite(flSpeed, limRPM((int)(SFL*baseRPM)));
+    analogWrite(frSpeed, 0);
+    digitalWrite(blDirn1, LOW);
+    digitalWrite(blDirn2, LOW);
+    digitalWrite(brDirn1, LOW);
+    digitalWrite(brDirn2, HIGH);
+    analogWrite(blSpeed, 0);
+    analogWrite(brSpeed, limRPM((int)(SBR*baseRPM)));
+    delay(600);
+    reset();
 }
 
 void move(float rpmr,float rpml)
@@ -230,47 +187,87 @@ void move(float rpmr,float rpml)
     //nh.loginfo("\n");
 }
 
-void move_sideway(float rpmbr,float rpmfr)
+void move_sideway_left(float rpmbl,float rpmfl)
 {
     //br&bl motion: moves right
     //fr&fl motion: moves left
-
 
     digitalWrite(flDirn1, LOW);
     digitalWrite(flDirn2, HIGH);
     digitalWrite(frDirn1, HIGH);
     digitalWrite(frDirn2, LOW);
-    analogWrite(flSpeed, limRPM((int)(SFL*rpmfr)));
+    analogWrite(flSpeed, limRPM((int)(SFL*rpmfl)));
     //analogWrite(frSpeed, limRPM((int)(SFR*rpmfr)));
-    analogWrite(frSpeed, limRPM(FR*baseRPM));
+    analogWrite(frSpeed, limRPM((int)(SFR*baseRPM)));
     digitalWrite(blDirn1, HIGH);
     digitalWrite(blDirn2, LOW);
     digitalWrite(brDirn1, LOW);
     digitalWrite(brDirn2, HIGH);
-    analogWrite(blSpeed, limRPM((int)(SBL*rpmbr)));
+    analogWrite(blSpeed, limRPM((int)(SBL*rpmbl)));
     //analogWrite(brSpeed, limRPM((int)(SBR*rpmbr)));
-    analogWrite(brSpeed, limRPM(BR*baseRPM));
+    analogWrite(brSpeed, limRPM((int)(SBR*baseRPM)));
 
-    char res1[8];
-    dtostrf(limRPM((int)(FL*rpmbr)), 6, 2, res1);
-    //nh.loginfo("FL");
-    //nh.loginfo(res1);
-    char res2[8];
-    dtostrf(limRPM((int)(FR*rpmfr)), 6, 2, res2);
-    //nh.loginfo("FR");
-    //nh.loginfo(res2);
-    char res3[8];
-    dtostrf(limRPM((int)(BL*rpmfr)), 6, 2, res3);
-    //nh.loginfo("BL");
-    //nh.loginfo(res3);
-    char res4[8];
-    dtostrf(limRPM((int)(BR*rpmbr)), 6, 2, res4);
-    //nh.loginfo("BR");
-    //nh.loginfo(res4);
-    //nh.loginfo("\n");
-    //nh.loginfo("\n");
+    // char res1[8];
+    // dtostrf(limRPM((int)(SFL*rpmbr)), 6, 2, res1);
+    // nh.loginfo("FL");
+    // nh.loginfo(res1);
+    // char res2[8];
+    // dtostrf(limRPM((int)(SFR*rpmfr)), 6, 2, res2);
+    // nh.loginfo("FR");
+    // nh.loginfo(res2);
+    // char res3[8];
+    // dtostrf(limRPM((int)(SBL*rpmfr)), 6, 2, res3);
+    // nh.loginfo("BL");
+    // nh.loginfo(res3);
+    // char res4[8];
+    // dtostrf(limRPM((int)(SBR*rpmbr)), 6, 2, res4);
+    // nh.loginfo("BR");
+    // nh.loginfo(res4);
+    // nh.loginfo("\n");
+    // nh.loginfo("\n");
 }
 
+
+
+void move_sideway_right(float rpmbr,float rpmfr)
+{
+    //br&bl motion: moves right
+    //fr&fl motion: moves left
+
+    digitalWrite(flDirn1, HIGH);
+    digitalWrite(flDirn2, LOW);
+    digitalWrite(frDirn1, LOW);
+    digitalWrite(frDirn2, HIGH);
+    //analogWrite(flSpeed, limRPM((int)(SFL*rpmfl)));
+    analogWrite(frSpeed, limRPM((int)(SFR*rpmfr)));
+    analogWrite(flSpeed, limRPM((int)(SFL*baseRPM)));
+    digitalWrite(blDirn1, LOW);
+    digitalWrite(blDirn2, HIGH);
+    digitalWrite(brDirn1, HIGH);
+    digitalWrite(brDirn2, LOW);
+    //analogWrite(blSpeed, limRPM((int)(SBL*rpmbl)));
+    analogWrite(brSpeed, limRPM((int)(SBR*rpmbr)));
+    analogWrite(blSpeed, limRPM((int)(SBL*baseRPM)));
+
+    // char res1[8];
+    // dtostrf(limRPM((int)(SFL*rpmbr)), 6, 2, res1);
+    // nh.loginfo("FL");
+    // nh.loginfo(res1);
+    // char res2[8];
+    // dtostrf(limRPM((int)(SFR*rpmfr)), 6, 2, res2);
+    // nh.loginfo("FR");
+    // nh.loginfo(res2);
+    // char res3[8];
+    // dtostrf(limRPM((int)(SBL*rpmfr)), 6, 2, res3);
+    // nh.loginfo("BL");
+    // nh.loginfo(res3);
+    // char res4[8];
+    // dtostrf(limRPM((int)(SBR*rpmbr)), 6, 2, res4);
+    // nh.loginfo("BR");
+    // nh.loginfo(res4);
+    // nh.loginfo("\n");
+    // nh.loginfo("\n");
+}
 
 /*
 void sideway_right(float rpmr,float rpml)
@@ -342,57 +339,12 @@ void sideway_left(float rpmr,float rpml)
 
 void distance_callback(const std_msgs::Float64 &dist)//FORWARD_PID
 {
-    //fr&bl motion: moves right
-    //br&fl motion: moves left
-    
     distance = dist.data;
-
-    // effect_rot_callback();
-
-    // char res[8];
-    // dtostrf(distance, 6, 2, res);
-    // //nh.loginfo("Distance");
-    // //nh.loginfo(res);
-    
-    // error=distance;
-
-    // float rpm = Kp * error + Kd * (error - lastError) + Ki*( error + lastError );
-    // lastError = error;
-
-    // float rpmr=baseRPM-rpm;
-    // float rpml=baseRPM+rpm;
-    // iter=iter+1;
-    // move(rpmr,rpml);
-    // char iterst[8];
-    // dtostrf(iter,6,2,iterst);
-    // //nh.loginfo(iterst);
 }
 
-void distance_rot_callback(const std_msgs::Float64 &dist)//SIDEWAYS_PID
-{
-    distance = dist.data;
-
-    // char res[8];
-    // dtostrf(distance, 6, 2, res);
-    // //nh.loginfo("Distance");
-    // //nh.loginfo(res);
-
-    // error=distance;
-
-    // float rpm = Kp * error + Kd * (error - lastError) + Ki*( error + lastError );
-    // lastError = error;
-
-    // float rpmr=baseRPM-rpm;
-    // float rpml=baseRPM+rpm;
-    // iter=iter+1;
-    // move_sideway(rpmr,rpml);
-    // char iterst[8];
-    // dtostrf(iter,6,2,iterst);
-    //nh.loginfo(iterst);
-}
 
 ros::Subscriber<std_msgs::Float64> sub_distance("/robocon2018/distance", &distance_callback);
-ros::Subscriber<std_msgs::Float64> sub_distance_rot("/robocon2018/distance", &distance_rot_callback);
+//ros::Subscriber<std_msgs::Float64> sub_distance_rot("/robocon2018/distance", &distance_rot_callback);
 
 /*
 void angle_rot_callback(const std_msgs::Float64 &ang)
@@ -416,10 +368,15 @@ void angle_rot_callback(const std_msgs::Float64 &ang)
 */
 void effect_rot_callback()
 {
-    if(rotCon == 1)
+    if(rotCon == 1 || rotCon==2)
     {
-        char res[8];
-        dtostrf(distance, 6, 2, res);
+        if(itt==0){
+            overshoot();
+            lastError=0;
+        }
+        itt=1;
+        //char res[8];
+        //dtostrf(distance, 6, 2, res);
         //nh.loginfo("Distance");
         //nh.loginfo(res);
 
@@ -431,18 +388,42 @@ void effect_rot_callback()
         float rpmr=baseRPM-rpm;
         float rpml=baseRPM+rpm;
         iter=iter+1;
-        move_sideway(rpmr,rpml);
-        char iterst[8];
-        dtostrf(iter,6,2,iterst);
+        move_sideway_left(rpmr,rpml);
+        //char iterst[8];
+        //dtostrf(iter,6,2,iterst);
         //nh.loginfo(iterst);
     }
-    else if(rotCon == 0)
-    {
-            //fr&bl motion: moves right
-    //br&fl motion: moves left
 
-        char res[8];
-        dtostrf(distance, 6, 2, res);
+
+    else if(rotCon == 4 || rotCon==5 || rotCon==6)
+    {
+        //char res[8];
+        //dtostrf(distance, 6, 2, res);
+        //nh.loginfo("Distance");
+        //nh.loginfo(res);
+
+        error=-distance;
+
+        float rpm = SKp * error + SKd * (error - lastError) + SKi*( error + lastError );
+        lastError = error;
+
+        float rpmr=baseRPM-rpm;
+        float rpml=baseRPM+rpm;
+        iter=iter+1;
+        move_sideway_right(rpmr,rpml);
+        //char iterst[8];
+        //dtostrf(iter,6,2,iterst);
+        //nh.loginfo(iterst);
+    }
+
+
+    else if(rotCon == 0 )
+    {
+        //fr&bl motion: moves right
+        //br&fl motion: moves left
+
+        //char res[8];
+        //dtostrf(distance, 6, 2, res);
         //nh.loginfo("Distance");
         //nh.loginfo(res);
         
@@ -455,10 +436,12 @@ void effect_rot_callback()
         float rpml=baseRPM+rpm;
         iter=iter+1;
         move(rpmr,rpml);
-        char iterst[8];
-        dtostrf(iter,6,2,iterst);
+        //char iterst[8];
+        //dtostrf(iter,6,2,iterst);
         //nh.loginfo(iterst);
     }
+    else if (rotCon==3)
+        reset();
 
     
 }

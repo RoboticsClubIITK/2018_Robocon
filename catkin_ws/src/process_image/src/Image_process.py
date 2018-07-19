@@ -1,7 +1,6 @@
 import numpy as np
-import cv2
-low=(50,20,5)
-upp=(150,150,150)
+from Utils import*
+
 class Image_process:
     
     def __init__(self):
@@ -11,14 +10,8 @@ class Image_process:
         self.x_coord = None
         
     def Process(self):
-        self.blur=cv2.GaussianBlur(self.image,(11,11),0)#blur the grayscale image
-        self.hsv=cv2.cvtColor(self.blur,cv2.COLOR_BGR2HSV)#convert each frame to grayscale.
-        self.mask=cv2.inRange(self.hsv,low,upp)
-        #ret,th1 = cv2.threshold(mask,100,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)#using threshold remove noise
-        #ret1,th2 = cv2.threshold(th1,100,255,cv2.THRESH_BINARY_INV)# invert the pixels of the image frame
-        self.thresh = cv2.erode(self.mask, None, iterations=2)  
-        self.thresh = cv2.dilate(self.thresh, None, iterations=2)
-        _, self.contours, _ = cv2.findContours(self.thresh,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE) #Get contour
+        self.imgfil=filter(self.image)
+        _, self.contours, _ = cv2.findContours(self.imgfil,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE) #Get contour
         
         self.prev_MC = self.MainContour
         if len(self.contours)>0:
@@ -40,7 +33,6 @@ class Image_process:
             else:
                 self.contourCenterX = 0
             
-            #self.dir =  int((self.middleX-self.contourCenterX) * self.getContourExtent(self.MainContour))
             self.x_coord = int(self.contourCenterX)
 
             cv2.drawContours(self.image,self.MainContour,-1,(0,255,0),3) #Draw Contour GREEN
